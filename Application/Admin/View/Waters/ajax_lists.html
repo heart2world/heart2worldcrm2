@@ -1,0 +1,19 @@
+<volist name="info['lists']" id="vo">
+    <tr url="{:U('index/info',array('id'=>$vo['id']))}">
+        <td align="center" style="white-space: nowrap;"><input type="checkbox" name="ids[]" class="ids" value="{$vo['id']}"></td>
+        <volist name="vo['data']" id="item">
+            <td style="white-space: nowrap;" title="{$item|default=''}">
+                <php>
+                    if(mb_strlen($item,'UTF8') > 16){
+                        echo mb_substr($item,0,16,'utf-8').'...';
+                    }else{
+                        echo $item;
+                    }
+                </php>
+            </td>
+        </volist>
+        <td style="white-space: nowrap; text-align: center;">
+            <a class="btn btn-info btn-xs" onclick="ajax_get(this)" url="{:U('grab',array('id'=>$vo['id']))}" title="抢客户" msg='确定"抢到"该客户？'>抢</a>
+        </td>
+    </tr>
+</volist>

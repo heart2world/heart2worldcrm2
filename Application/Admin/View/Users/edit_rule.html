@@ -1,0 +1,40 @@
+<extend name="Base::page"/>
+<block name="style">
+</block>
+<block name="body">
+    <div class="wrapper" style="padding-bottom:50px;">
+        <div class="content-wrapper" style="margin-left: 0px;">
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box box-primary">
+                            <form method="post" action="{:U('edit_rule')}" class="form-tagging">
+                                <div class="box-body">
+                                    <volist name="rules" id="vo">
+                                    <div class="form-group">
+                                        <label>{$vo['title']}</label>
+                                        <div class="checkbox">
+                                            <volist name="vo['content']" id="item">
+                                            <label style="margin-right: 50px;">
+                                                <input type="checkbox" name="rules[]" value="{$item['id']}" <eq name="item['is_on']" value="1">checked</eq> />{$item['title']}
+                                            </label>
+                                            </volist>
+                                        </div>
+                                    </div>
+                                    </volist>
+                                </div>
+                                <div class="box-footer fixedBotton">
+                                    <input type="hidden" name="role_id" value="{$Think.get.role_id}" />
+                                    <button type="submit" class="btn btn-primary ajax-post" target_form="form-tagging">保存</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+</block>

@@ -1,0 +1,156 @@
+[ 2018-12-06T08:39:21+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000355s ]
+ERR: 无法加载模块:Favicon
+
+[ 2018-12-06T09:02:52+08:00 ] 127.0.0.1 /Public/font/iconfont.woff?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000335s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:02:52+08:00 ] 127.0.0.1 /Public/font/iconfont.ttf?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000302s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:03:48+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000338s ]
+ERR: 无法加载模块:Favicon
+
+[ 2018-12-06T09:04:01+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001250s ]
+ERR: 无法加载模块:Favicon
+
+[ 2018-12-06T09:04:04+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000344s ]
+ERR: 无法加载模块:Favicon
+
+[ 2018-12-06T09:04:08+08:00 ] 127.0.0.1 /Public/font/iconfont.woff?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000310s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:04:08+08:00 ] 127.0.0.1 /Public/font/iconfont.ttf?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000320s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:04:16+08:00 ] 127.0.0.1 /Public/font/iconfont.woff?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000334s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:04:16+08:00 ] 127.0.0.1 /Public/font/iconfont.ttf?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000299s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:04:38+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002865s ]
+ERR: 无法加载模块:Favicon
+
+[ 2018-12-06T09:04:39+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000339s ]
+ERR: 无法加载模块:Favicon
+
+[ 2018-12-06T09:04:58+08:00 ] 127.0.0.1 /Public/font/iconfont.woff?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000342s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:04:58+08:00 ] 127.0.0.1 /Public/font/iconfont.ttf?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000323s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:05:06+08:00 ] 127.0.0.1 /Public/font/iconfont.woff?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000373s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:05:06+08:00 ] 127.0.0.1 /Public/font/iconfont.ttf?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000318s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:11:05+08:00 ] 127.0.0.1 /Public/font/iconfont.woff?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000353s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:11:05+08:00 ] 127.0.0.1 /Public/font/iconfont.ttf?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000309s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:16:16+08:00 ] 127.0.0.1 /Public/font/iconfont.woff?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000320s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:16:16+08:00 ] 127.0.0.1 /Public/font/iconfont.ttf?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000323s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:17:09+08:00 ] 127.0.0.1 /Public/font/iconfont.woff?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000330s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:17:09+08:00 ] 127.0.0.1 /Public/font/iconfont.ttf?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000315s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:20:23+08:00 ] 127.0.0.1 /Public/font/iconfont.woff?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000366s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:20:23+08:00 ] 127.0.0.1 /Public/font/iconfont.ttf?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000351s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:21:18+08:00 ] 127.0.0.1 /Public/font/iconfont.woff?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000350s ]
+ERR: 无法加载模块:Public
+
+[ 2018-12-06T09:21:18+08:00 ] 127.0.0.1 /Public/font/iconfont.ttf?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000338s ]
+ERR: 无法加载模块:Public
+

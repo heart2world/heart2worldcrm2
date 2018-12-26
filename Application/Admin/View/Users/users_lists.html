@@ -1,0 +1,97 @@
+<extend name="Base::page"/>
+<block name="style">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="__CSS__/dataTables.bootstrap.min.css">
+</block>
+<block name="body">
+    <div class="wrapper">
+        <!--菜单-->
+        <include file="Base/menu" />
+
+        <!--内容页面-->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    员工管理
+                </h1>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- /.box -->
+
+                        <div class="box">
+                            <div class="box-header">
+                                <a class="btn btn-primary popshow" url="{:U('edit_users')}" title="新增员工" w="600" h="500">新增员工</a>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>员工名字</th>
+                                        <th>角色</th>
+                                        <th>登录账号</th>
+                                        <th>手机号</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <volist name="lists" id="vo">
+                                    <tr>
+                                        <td>{$vo['name']}</td>
+                                        <td>{$vo['role_text']}</td>
+                                        <td>{$vo['login_name']}</td>
+                                        <td>{$vo['mobile']}</td>
+                                        <td>
+                                            <if condition="$vo['type'] eq 1">
+                                                <!--管理员-->
+                                                <a class="btn btn-info btn-xs" disabled>冻结</a>
+                                                <a class="btn btn-info btn-xs" disabled>重置密码</a>
+                                                <a class="btn btn-info btn-xs" disabled>删除</a>
+                                                <a class="btn btn-info btn-xs" disabled>编辑</a>
+                                            <else/>
+                                                <!--用户-->
+                                                <eq name="vo['status']" value="1">
+                                                    <a class="btn btn-info btn-xs ajax-get" msg="是否冻结该员工？冻结后将不可登录" url="{:U('edit_status',array('id'=>$vo['id']))}">冻结</a>
+                                                    <else/>
+                                                    <a class="btn btn-info btn-xs ajax-get" msg="是否解冻该员工？解冻后将可以登录" url="{:U('edit_status',array('id'=>$vo['id']))}">解冻</a>
+                                                </eq>
+                                                <a class="btn btn-info btn-xs popshow" url="{:U('edit_password',array('id'=>$vo['id'],'name'=>$vo['name']))}" title="重置密码" w="600" h="400">重置密码</a>
+                                                <a class="btn btn-info btn-xs ajax-get" msg="确认要删除该条数据吗？" url="{:U('del_users',array('id'=>$vo['id']))}">删除</a>
+                                                <a class="btn btn-info btn-xs popshow" url="{:U('edit_users',array('id'=>$vo['id']))}" title="编辑员工" w="600" h="500">编辑</a>
+                                            </if>
+                                        </td>
+                                    </tr>
+                                    </volist>
+                                    </tbody>
+                                </table>
+                                        </div>
+                                    </div>
+                                    <!--分页-->
+                                    {$_page}
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+
+        <!--尾部-->
+        <include file="Base/footer" />
+    </div>
+</block>
+
+<block name="script">
+</block>

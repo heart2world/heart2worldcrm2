@@ -1,0 +1,206 @@
+<extend name="Base::page"/>
+<block name="style">
+    <style>
+        .info_style{width: 30%;}
+        .logs_content{margin-left: 25px;}
+        .logs_line{line-height: 30px;}
+        table{border: 1px solid #000;width: 80%;}
+        th,td{border:  1px solid #000;text-align: center;line-height: 30px;padding: 0 5px;}
+        .nav-tabs-custom>.nav-tabs>li.header{font-size: 14px;line-height: 35px;padding-left: 20px;height: 42px;}
+        .box-body{padding: 15px 20px;}
+        .nav-tabs-custom{box-shadow: none;}
+        .nav-tabs-custom:nth-child(4n){margin-right:0;}
+        .timeline>li>.timeline-item{box-shadow: none;background: #f7f7f7;padding: 9px 12px;}
+        .timeline>li>.timeline-item>.timeline-header{padding-top:6px;border-bottom: 0;font-size:14px;}
+        .timeline-header a{margin-right:16px;font-size:16px;}
+        .fileSpan{width:60%;}
+        .fileSpan a{color:#FFF;display:;line-height:30px;}
+        .imgsl{width:70px;height:70px;cursor:pointer;margin-right:10px;margin-bottom:10px;}
+        .fa-envelope:before{display:none;}
+        .timeline>li>.timeline-item>.timeline-body, .timeline>li>.timeline-item>.timeline-footer{padding-top:0;margin-top:-10px;}
+    </style>
+</block>
+<block name="body">
+    <div class="wrapper">
+        <!--菜单-->
+        <include file="Base/menu" />
+
+        <!--内容页面-->
+        <div class="content-wrapper">
+            <section class="content-header">
+                <eq name="info['status']" value="2">
+                    <!--公海详情-->
+                    <a class="btn btn-primary" onclick="ajax_get(this)" url="{:U('grab',array('id'=>$vo['id']))}" title="抢客户" msg='确定"抢到"该客户？'>抢</a>
+                <else/>
+                    <!--客户详情-->
+                    <a class="btn btn-primary popshow" url="{:U('customer_transfer',array('customer_id'=>$info['id']))}" title="转移客户" w="600" h="400">转移</a>
+                    <a class="btn btn-primary popshow" url="{:U('edit',array('id'=>$info['id']))}" title="编辑客户" w="600" h="500">编辑</a>
+                    <a class="btn btn-primary popshow" url="{:U('add_follow',array('customer_id'=>$info['id']))}" title="写跟进" w="600" h="500">写跟进</a>
+                </eq>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+					<section class="col-lg-5 connectedSortable">
+                        <volist name="info['lists']" id="vo">
+                            <div class="nav-tabs-custom">
+                                <switch name="vo['type']">
+                                    <case value="1">
+                                        <ul class="nav nav-tabs pull-right" style="background-color: #00a7d0;border-bottom: 0;">
+                                            <li class="pull-left header" style="color:#FFF;">{$vo['title']}</li>
+                                        </ul>
+                                        <div class="tab-content no-padding" style="background-color: #00c0ef">
+                                    </case>
+                                    <case value="2">
+                                        <ul class="nav nav-tabs pull-right" style="background-color: #db8b0b;border-bottom: 0;">
+                                            <li class="pull-left header" style="color:#FFF;">{$vo['title']}</li>
+                                        </ul>
+                                        <div class="tab-content no-padding" style="background-color: #f39c12">
+                                    </case>
+                                    <case value="3">
+                                        <ul class="nav nav-tabs pull-right" style="background-color: #008d4c;border-bottom: 0;">
+                                            <li class="pull-left header" style="color:#FFF;">{$vo['title']}</li>
+                                        </ul>
+                                        <div class="tab-content no-padding" style="background-color: #00a65a">
+                                    </case>
+                                    <case value="4">
+                                        <ul class="nav nav-tabs pull-right" style="background-color: #d33724;border-bottom: 0;">
+                                            <li class="pull-left header" style="color:#FFF;">{$vo['title']}</li>
+                                        </ul>
+                                        <div class="tab-content no-padding" style="background-color: #dd4b39">
+                                    </case>
+                                </switch>
+
+                                    <div class="chart tab-pane active" style="position: relative;">
+                                        <div class="box-body" style="color: #FFF;">
+                                            <volist name="vo['data']" id="item">
+
+                                                <switch name="item['other_type']">
+                                                    <case value="image">
+                                                        <div class="form-group">
+                                                            <label class="info_style">图片</label>
+                                                            <span style="width:60%;display:inline-block;margin-left:30%;margin-top:-25px;">
+                                                                <foreach name="item['content']" item="pic_data">
+                                                                    <img src="{$pic_data}" class="imgsl pic_show" />
+                                                                </foreach>
+                                                            </span>
+                                                        </div>
+                                                    </case>
+                                                    <case value="file">
+                                                        <div class="form-group">
+                                                            <label class="info_style">附件</label>
+                                                            <span class="fileSpan" <if condition="count($item['content']) gt 1" >style="display:inline-block;margin-left:30%;margin-top:-30px;"</if> >
+                                                                <foreach name="item['content']" item="file_data">
+                                                                    <a href="{$file_data['url']}" target="_blank" style="text-decoration: underline;">{$file_data['name']}</a><br />
+                                                                </foreach>
+                                                            </span>
+                                                        </div>
+                                                    </case>
+                                                    <default/>
+                                                        <div class="form-group">
+                                                            <label class="info_style">{$item['title']}</label>
+                                                            <span>{$item['content']}</span>
+                                                        </div>
+                                                </switch>
+                                            </volist>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </volist>
+                    </section>
+                    
+                    <section class="col-lg-7 connectedSortable">
+                        <div class="nav-tabs-custom" style="width:100%;">
+                            <ul class="nav nav-tabs pull-right">
+                                <li class="pull-left header">跟进动态</li>
+                            </ul>
+                            <div class="tab-content no-padding" >
+                                <!-- Morris chart - Sales -->
+                                <div class="chart tab-pane active" style="position: relative;">
+                                    <div class="box-body">
+                                    	<ul class="timeline" style="margin-top:15px;">
+                                    		<volist name="logs" id="vo">
+                                    			<li class="time-label">
+                                                    <switch name="vo['pic_type']">
+                                                        <case value="1_1"><span class="bg-red" style="background:#00c1a3!important;">{$vo['create_time']}</span></case>
+                                                        <case value="1_2"><span class="bg-red" style="background:#01abee!important;">{$vo['create_time']}</span></case>
+                                                        <case value="1_3"><span class="bg-red" style="background:#0cce15!important;">{$vo['create_time']}</span></case>
+                                                        <case value="1_4"><span class="bg-red" style="background:#ffa200!important;">{$vo['create_time']}</span></case>
+                                                        <case value="1_5"><span class="bg-red" style="background:#55a3ff!important;">{$vo['create_time']}</span></case>
+                                                        <case value="1_6"><span class="bg-red" style="background:#34c800!important;">{$vo['create_time']}</span></case>
+                                                        <case value="1_7"><span class="bg-red" style="background:#2a70ff!important;">{$vo['create_time']}</span></case>
+                                                        <case value="2"><span class="bg-red" style="background:#c046ff!important;">{$vo['create_time']}</span></case>
+                                                        <case value="3"><span class="bg-red" style="background:#00b868!important;">{$vo['create_time']}</span></case>
+                                                        <case value="4"><span class="bg-red" style="background:#ff2778!important;">{$vo['create_time']}</span></case>
+                                                        <case value="5"><span class="bg-red" style="background:#00e1e9!important;">{$vo['create_time']}</span></case>
+                                                        <case value="6"><span class="bg-red" style="background:#3d91b0!important;">{$vo['create_time']}</span></case>
+                                                        <case value="7"><span class="bg-red" style="background:#7ba6ff!important;">{$vo['create_time']}</span></case>
+                                                    </switch>
+											    </li>
+											    <li>
+											        <i class="fa" style="background: url(/public/img/ico{$vo['pic_type']}.png)no-repeat center center / 100% 100%;"></i>
+											        <div class="timeline-item">
+                                                        <h3 class="timeline-header"><a href="javaScript:void(0)" style="display:<if condition="$vo['users_name']==null">none;</if>;">{$vo['users_name']}</a>{$vo['type_text']}</h3>
+											            <switch name="vo['type']">
+		                                                    <case value="1">
+		                                                        <div class="timeline-body"><br/>{$vo['content']['content']}</div>
+		                                                        <notempty name="vo['content']['follow_pic']">
+		                                                            <div class="logs_line" style="margin-left:11px;">
+		                                                                <volist name="vo['content']['follow_pic']" id="item">
+		                                                                    <img class="pic_show" style="width: 100px;height: 100px;margin-right: 5px;" src="{:getFileUrl($item)}" />
+		                                                                </volist>
+		                                                            </div>
+		                                                        </notempty>
+		                                                        <div class="logs_line" style="margin-left:11px;">写跟进的时间：{$vo['content']['follow_time']}</div>
+		                                                    </case>
+		                                                    <case value="2">
+		                                                        <div class="timeline-body">
+			                                                        <volist name="vo['content']" id="item">
+			                                                            <br/><span style="color: #929292;<if condition="$item['title']!=null">margin-right:11px;</if>display:inline-block;">{$item['title']}</span>{$item['content']}
+			                                                        </volist>
+		                                                        </div>
+		                                                    </case>
+		                                                    <default/>
+                                                            <div class="timeline-body">
+                                                                <notempty name="vo['content']">
+                                                                    <br/>{$vo['content']}
+                                                                </notempty>
+                                                            </div>
+		                                                </switch>
+											        </div>
+											    </li>
+										    </volist>
+										</ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+					
+					
+                </div>
+            </section>
+        </div>
+        <!--尾部-->
+        <include file="Base/footer" />
+    </div>
+</block>
+<block name="script">
+	<script>
+		$(".pic_show").click(function(){
+			var that = $(this);
+			layer.open({
+			  type: 1,
+			  title: false,
+			  closeBtn: 0,
+//			  area: '516px',
+			  skin: 'layui-layer-nobg', //没有背景色
+			  shadeClose: true,
+              scrollbar:false,
+			  content: '<img src="'+ that.attr("src") +'" style="width:100%;" />'
+			});
+		})
+	</script>
+</block>

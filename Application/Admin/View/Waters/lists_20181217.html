@@ -1,0 +1,391 @@
+<extend name="Base::page"/>
+<block name="style">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="__CSS__/dataTables.bootstrap.min.css">
+    <style>
+        .screen{line-height: 30px;margin-bottom: 10px;}
+        .one_option_title{width: 120px;}
+        .one_option{padding: 2px 10px;color:#444;}
+        .button_show{width: 50%;float: left;}
+        .search{width: 50%;float: right;text-align: right;}
+        .option_on{background-color: #3c8dbc;color: #fff !important;}
+        .activeTd{background:#eff6ff!important;}
+        @media (min-width: 767px){.pageFixed{position: fixed; bottom: 0; right: 0; width: calc(100% - 230px); background: #FFFF; padding: 12px 20px; box-shadow: 0px -2px 3px #f1f1f1;z-index:99999999;}}
+        .buttonFixed{ position: absolute; right: 0; height: 0; width: 0; top: 0; background: #FFF; z-index: 9999; display:none; }
+        .buttonFixed>div{ border: 1px solid #f4f4f4; padding: 8px; line-height: 1.42857143; vertical-align: top; margin-top:-1px; height:41px; }
+        .buttonFixed>div:nth-child(1){ border-bottom-width: 3px; height:42px; }
+        .buttonFixed>div:nth-of-type(even) { background-color: #f9f9f9; }
+    </style>
+</block>
+<block name="body">
+    <div class="wrapper">
+        <!--菜单-->
+        <include file="Base/menu" />
+
+        <!--内容页面-->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    全部客户
+                </h1>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- /.box -->
+
+                        <div class="box">
+                            <div class="box-header">
+                                <!--筛选-->
+                                <div class="screen">
+                                    <volist name="info['screen_data']['choice']" id="vo">
+                                    <div class="ones_option" name="{$vo['fields_text']}">
+                                        <label class="one_option_title">{$vo['title']}：</label>
+                                        <a href="#" class="one_option option_on" value="">全部</a>
+                                        <volist name="vo['extra']" id="item">
+                                            <notempty name="item['id']">
+                                                <a href="#" class="one_option" value="{$item['id']}" <eq name="item['other_type']" value="time">other_type="time"</eq> >{$item['title']}</a>
+                                                <eq name="item['other_type']" value="time">
+                                                    <input type="text" name="time_{$vo['fields_text']}" id="time_{$vo['fields_text']}" readonly style="height: 24px;display: none;"/>
+                                                </eq>
+                                            <else/>
+                                                <a href="#" class="one_option" value="{$item['title']}" >{$item['title']}</a>
+                                            </notempty>
+                                        </volist>
+                                    </div>
+                                    </volist>
+                                </div>
+                                <!--搜索-->
+                                <div>
+                                    <!--按钮显示-->
+                                    <div class="button_show">
+                                        <a class="btn btn-primary" id="excel" href="#">导出excel</a>
+                                        <a class="btn btn-primary popshow" url="{:U('edit_fields_screen')}" title="自定义筛选字段" w="600" h="500">筛选设置</a>
+                                    </div>
+                                    <!--搜索显示-->
+                                    <div class="search">
+                                        <select class="select2 search_mark" style="width: 100px;" name="search">
+                                            <volist name="info['screen_data']['text']" id="vo">
+                                                <option value="{$vo['fields_text']}" >{$vo['title']}</option>
+                                            </volist>
+                                        </select>
+                                        <input type="text" name="search_title" class="form-control search_title" style="display: inline;width: 30%; vertical-align: bottom" value="" maxlength="20" placeholder="请输入">
+                                        <button type="button" class="btn btn-primary" id="search">查询</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="box-body">
+                                <div class="dataTables_wrapper form-inline dt-bootstrap no-footer" style="overflow-x: auto">
+                                    <div class="">
+                                        <div class="col-sm-12" style="padding:0;">
+                                            <table class="table table-bordered table-striped dataTable">
+                                                <thead>
+                                                <tr>
+                                                    <td align="center" style="white-space: nowrap;"><input type="checkbox" class="check_all"></td>
+                                                    <volist name="info['show_data']" id="vo">
+                                                    <th style="white-space: nowrap;" class="sorting" name="{$vo['fields_text']}" onclick="sort(this)">{$vo['title']}</th>
+                                                    </volist>
+                                                    <td style="white-space: nowrap;"><a href="#" class="popshow" onclick="pop_show(this)" url="{:U('edit_fields_show')}" title="自定义显示列" w="600" h="500"><i class="fa fa-fw fa-cog"></i></a></td>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                	
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!--分页-->
+                                    <div class="page pageFixed"></div>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+
+        <!--尾部-->
+        <include file="Base/footer" />
+    </div>
+</block>
+
+<block name="script">
+    <!-- Select2 -->
+    <script src="__JS__/select2.full.min.js"></script>
+    <!--laydate-->
+    <script src="__PUBLIC__/laydate/laydate.js"></script>
+    <script>
+        //下拉选择样式
+        $('.select2').select2();
+        //弹出层
+        function pop_show(obj){
+            layer_show($(obj).attr('title'),$(obj).attr('url'),$(obj).attr('w'),$(obj).attr('h'));
+        }
+        //自定义时间
+        var time_data = {$info['time_ids']};
+        for(var i in time_data){
+            laydate.render({
+                elem: '#time_'+time_data[i],
+                theme: '#3c8dbc',
+                trigger: 'click',
+                range: true,
+                done:function(){
+                    hanle_data();
+                }
+            });
+        }
+        //全选
+        $(".check_all").click(function(){
+            if($(this).is(":checked")){
+                $(".ids").prop('checked',true);
+                $(".dataTables_wrapper tbody tr,.buttonFixed>div").addClass("activeTd")
+            }else{
+                $(".ids").prop('checked',false);
+                $(".dataTables_wrapper tbody tr,.buttonFixed>div").removeClass("activeTd")
+            }
+            $(".buttonFixed>div").eq(0).removeClass("activeTd")
+        });
+        //单选
+        $(".dataTables_wrapper tbody").on("click",".ids",function(e){
+            if(!$(this).is(":checked")){
+                $(".check_all").prop('checked',false);
+                $(this).parents("tr").removeClass("activeTd")
+                $(".buttonFixed>div").eq($(this).parents("tr").index()+1).removeClass("activeTd")
+            }else{
+            	$(this).removeClass("activeTd")
+            	$(this).parents("tr").addClass("activeTd")
+            	$(".buttonFixed>div").eq($(this).parents("tr").index()+1).addClass("activeTd")
+            }
+            e.stopPropagation();
+        });
+		//单机选中任一一行
+		var timer=null;
+		$(".dataTables_wrapper tbody").on("click","tr",function(){
+			var that = $(this);
+			clearTimeout(timer);
+			timer = setTimeout(function(){
+			    if(that.find("input[type='checkbox']")[0].checked){
+					that.removeClass("activeTd")
+					that.find("input[type='checkbox']").prop("checked", false);
+					$(".buttonFixed>div").eq(that.index()+1).removeClass("activeTd");
+				}else{
+					that.addClass("activeTd")
+					that.find("input[type='checkbox']").prop("checked", true);
+					$(".buttonFixed>div").eq(that.index()+1).addClass("activeTd");
+				} 
+			},200)
+		})
+		//双击打开详情页
+		$(".dataTables_wrapper tbody").on("dblclick","tr",function(){
+			clearTimeout(timer);
+			open($(this).attr("url"),"_blank");
+		})
+        //自动加载数据
+        $(function(){
+            $.ajax({
+                type:"get",
+                url:"{$url}",
+                success:function(html){
+                    if(html.lists){
+                        $("tbody").html(html.lists);
+                        $(".page").html(html.page);
+                        $(".box").append('<div class="buttonFixed"></div>');
+                        fixed();
+                    }else{
+                        $("tbody").html('<tr><td colspan="50" align="center">暂无数据</td></tr>')
+                        $(".page,.buttonFixed").remove();
+                    }
+                }
+            });
+        });
+        //处理数据
+        function hanle_data(order,num){
+            if(!order){
+                if($(".sorting_desc").length != 0 ){
+                    order = $(".sorting_desc").attr('name') + ' desc';
+                }else if($(".sorting_asc").length != 0 ){
+                    order = $(".sorting_asc").attr('name') + ' asc';
+                }
+            }
+            var data = '';
+            var val="";
+            var name="";
+            if(!num){
+                num = 1;
+            }
+            var search = $(".search_mark").val();
+            var search_title = $(".search_title").val();
+            if(search && search_title){
+                data += 'search=' + search + '&search_title=' + search_title;
+            }
+            if(order){
+                if(data){
+                    data += '&order=' + order;
+                }else{
+                    data += 'order=' + order;
+                }
+            }
+            $(".option_on").each(function(){
+                val = $(this).attr('value');
+                if(val){
+                    name = $(this).parent(".ones_option").attr("name");
+                    if(data){
+                        data += '&' + name + '=' + val;
+                    }else{
+                        data += name + '=' + val;
+                    }
+                    //时间段
+                    if($(this).attr('other_type') == 'time' && $(this).next("input").val()){
+                        data += '&time_' + name + '=' + $(this).next("input").val();
+                    }
+                }
+            });
+            if(data){
+                data += '&p=' + num;
+            }else{
+                data += 'p=' + num;
+            }
+            $.ajax({
+                type:"post",
+                url:"{$url}",
+                data:data,
+                success:function(html){
+                    if(html.lists){
+                        $("tbody").html(html.lists);
+                        $(".page").html(html.page);
+                        $(".box").append('<div class="buttonFixed"></div>');
+                        fixed();
+                    }else{
+                        $("tbody").html('<tr><td colspan="50" align="center">暂无数据</td></tr>');
+                        $(".page,.buttonFixed").remove();
+                    }
+                }
+            });
+        }
+        //筛选
+        $("#search").click(function(){
+            hanle_data();
+        });
+        document.onkeydown = function (e) {
+            if (!e) e = window.event;
+            if ((e.keyCode || e.which) == 13) {
+                hanle_data();
+            }
+        }
+        function test(){
+            alert('abc');
+        }
+        //筛选
+        $(".one_option").click(function(){
+            $(this).addClass("option_on");
+            $(this).siblings("a").removeClass("option_on");
+            if($(this).attr("other_type") == "time"){
+                //时间段
+                $(this).next("input").show();
+                return false;
+            }else{
+                $(this).parent(".ones_option").find("input").hide();
+            }
+            hanle_data();
+        });
+        //分页
+        function ajax_page(obj){
+            var num = $(obj).attr("num");
+            hanle_data('',num);
+        }
+        //排序
+        function sort(obj){
+            if($(obj).hasClass("sorting")){
+                $(obj).siblings("th").removeClass("sorting_desc");
+                $(obj).siblings("th").removeClass("sorting_asc");
+                $(obj).siblings("th").addClass("sorting");
+                $(obj).removeClass("sorting");
+                $(obj).addClass("sorting_asc");
+                var order = $(obj).attr('name') + ' asc';
+                hanle_data(order);
+            }else if($(obj).hasClass("sorting_desc")){
+                $(obj).removeClass("sorting_desc");
+                $(obj).addClass("sorting_asc");
+                var order = $(obj).attr('name') + ' asc';
+                hanle_data(order);
+            }else if($(obj).hasClass("sorting_asc")){
+                $(obj).removeClass("sorting_asc");
+                $(obj).addClass("sorting_desc");
+                var order = $(obj).attr('name') + ' desc';
+                hanle_data(order);
+            }
+        }
+        //excel导出
+        $("#excel").click(function(){
+            var data = '';
+            var val="";
+            var name="";
+            var order = "";
+            var num = 1;
+            var search = $(".search_mark").val();
+            var search_title = $(".search_title").val();
+            if(search && search_title){
+                data += 'search=' + search + '&search_title=' + search_title;
+            }
+            if(order){
+                if(data){
+                    data += '&order=' + order;
+                }else{
+                    data += 'order=' + order;
+                }
+            }
+            $(".option_on").each(function(){
+                val = $(this).attr('value');
+                if(val){
+                    name = $(this).parent(".ones_option").attr("name");
+                    if(data){
+                        data += '&' + name + '=' + val;
+                    }else{
+                        data += name + '=' + val;
+                    }
+                    //时间段
+                    if($(this).attr('other_type') == 'time' && $(this).next("input").val()){
+                        data += '&time_' + name + '=' + $(this).next("input").val();
+                    }
+                }
+            });
+            if(data){
+                data += '&p=' + num;
+            }else{
+                data += 'p=' + num;
+            }
+            var url = "{:U('Excel/waters_excel')}";
+            url += '?' + data;
+            window.location.href = url;
+        });
+        
+        
+        function fixed(){
+        	//宽度已适应
+        	var td = $(".dataTable thead tr>*");
+        	var width = td.eq(td.length - 1).outerWidth() + 2;
+        	var height = td.eq(td.length - 1).outerHeight()*$(".dataTable tr").length;
+        	var top = td.eq(td.length - 1).offset().top - 109;
+        	$(".buttonFixed").css({"width":width,"height":height,"top":top,"right":"10px","display":"block"}).html("");
+        	
+        	//内容已修改
+        	for(var i = 0;i<$(".dataTable tr").length;i++){
+        		var html = $(".dataTable tr").eq(i).find(">*").eq($(".dataTable tr").eq(i).find(">*").length - 1).html();
+        		var is = $(".dataTable tr").eq(i).hasClass("activeTd");
+        		$(".buttonFixed").append('<div class="'+ (is==true?'activeTd':'') +'">'+html+'</div');
+        	}
+        }
+        $(window).resize(function(){
+        	fixed();
+        })
+    </script>
+</block>

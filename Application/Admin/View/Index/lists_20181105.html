@@ -1,0 +1,182 @@
+<extend name="Base::page"/>
+<block name="style">
+    <style>
+        .screen{line-height: 30px;margin-bottom: 10px;}
+        .one_option_title{width: 7%;}
+        .one_option{padding: 2px 10px;color:#444;}
+        .button_show{width: 50%;float: left;}
+        .search{width: 50%;float: right;text-align: right;}
+    </style>
+</block>
+<block name="body">
+    <div class="wrapper">
+        <!--菜单-->
+        <include file="Base/menu" />
+
+        <!--内容页面-->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    全部客户
+                </h1>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- /.box -->
+
+                        <div class="box">
+                            <div class="box-header">
+                                <!--筛选-->
+                                <div class="screen">
+                                    <volist name="info['screen_data']['choice']" id="vo">
+                                    <div>
+                                        <label class="one_option_title">{$vo['title']}：</label>
+                                        <a href="#" class="one_option">全部</a>
+                                        <volist name="vo['extra']" id="item">
+                                        <a href="#" class="one_option" name="{$item['id']}" >{$item['title']}</a>
+                                        </volist>
+                                    </div>
+                                    </volist>
+                                </div>
+                                <!--搜索-->
+                                <div>
+                                    <!--按钮显示-->
+                                    <div class="button_show">
+                                        <a class="btn btn-primary popshow" url="{:U('edit')}" title="新增客户" w="600" h="500">新增客户</a>
+                                        <a class="btn btn-primary transfer">转移</a>
+                                        <a class="btn btn-primary popshow" url="{:U('edit_fields_screen')}" title="自定义筛选字段" w="600" h="500">筛选设置</a>
+                                    </div>
+                                    <!--搜索显示-->
+                                    <div class="search">
+                                        <select class="select2 search_mark" style="width: 100px;" name="search">
+                                            <volist name="info['screen_data']['text']" id="vo">
+                                                <option value="{$vo['fields_text']}" <eq name="vo['fields_text']" value="$Think.get.search">selected</eq> >{$vo['title']}</option>
+                                            </volist>
+                                        </select>
+                                        <input type="text" name="search_title" value="{$Think.get.search_title}" class="form-control search_title" style="display: inline;width: 200px;" value="" maxlength="20" placeholder="请输入">
+                                        <button type="button" class="btn btn-primary" id="search">查询</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="box-body">
+                                <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-bordered table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <td align="center"><input type="checkbox" class="check_all"></td>
+                                                    <volist name="info['show_data']" id="vo">
+                                                    <th>{$vo['title']}</th>
+                                                    </volist>
+                                                    <th><a href="#" class="popshow" url="{:U('edit_fields_show')}" title="自定义显示列" w="600" h="500"><i class="fa fa-fw fa-cog"></i></a></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <volist name="info['lists']" id="vo">
+                                                <tr>
+                                                    <td align="center"><input type="checkbox" name="ids[]" class="ids" value="{$vo['id']}"></td>
+                                                    <volist name="vo['data']" id="item">
+                                                    <td>{$item|default='-'}</td>
+                                                    </volist>
+                                                    <td>
+                                                        <a class="btn btn-info btn-xs popshow" url="{:U('edit',array('id'=>$vo['id']))}" title="编辑客户" w="600" h="500">编辑</a>
+                                                        <a class="btn btn-info btn-xs popshow" url="{:U('add_follow',array('customer_id'=>$vo['id']))}" title="写跟进" w="600" h="500">写跟进</a>
+                                                        <a class="btn btn-info btn-xs popshow" url="{:U('customer_info',array('id'=>$vo['id']))}" title="客户详情" w="600" h="500">详情</a>
+                                                    </td>
+                                                </tr>
+                                                </volist>
+                                                <!--暂无数据-->
+                                                <empty name="info['lists']">
+                                                    <tr><td colspan="50" align="center">暂无数据</td></tr>
+                                                </empty>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!--分页-->
+                                    {$_page}
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+
+        <!--尾部-->
+        <include file="Base/footer" />
+    </div>
+</block>
+
+<block name="script">
+    <!-- Select2 -->
+    <script src="__JS__/select2.full.min.js"></script>
+    <script>
+        //Initialize Select2 Elements
+        $('.select2').select2();
+        $("#search").click(function(){
+            var data = '';
+            var url = "{$url}";
+            var search = $(".search_mark").val();
+            var search_title = $(".search_title").val();
+            if(search && search_title){
+                data += '?search=' + search + '&search_title=' + search_title;
+            }
+            url += data;
+            window.location.href = url;
+        });
+        //转移
+        $(".transfer").click(function(){
+            var ids = new Array();
+            $(".ids").each(function(){
+                if($(this).is(':checked')){
+                    ids.push($(this).val());
+                }
+            });
+            ids = ids.join('_');
+            if(!ids){
+                layer.msg('请选择需要转移的客户', {icon: 2,time:1500});
+                return false;
+            }
+            var url = "{:U('customer_transfer')}";
+            url += '?customer_id=' + ids;
+            layer_show('转移客户',url,'600','400');
+        });
+        //全选
+        $(".check_all").click(function(){
+            if($(this).is(":checked")){
+                $(".ids").prop('checked',true);
+            }else{
+                $(".ids").prop('checked',false);
+            }
+        });
+        //单选
+        $(".ids").click(function(){
+            if(!$(this).is(":checked")){
+                $(".check_all").prop('checked',false);
+            }
+        });
+
+        //加载数据
+        $(function(){
+            $.ajax({
+                type:"get",
+                url:"{$url}",
+                success:function($data){
+
+                }
+            });
+        });
+    </script>
+</block>

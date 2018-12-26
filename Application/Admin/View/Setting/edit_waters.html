@@ -1,0 +1,169 @@
+<extend name="Base::page"/>
+<block name="style">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="__CSS__/dataTables.bootstrap.min.css">
+    <style>
+        label{
+            color:#333;
+            font-weight: normal;
+        }
+        .content-wrapper{
+            background:#FFF;
+        }
+        .fire-form{
+            width:740px;
+            background:#FFF;
+            padding:20px 20px;
+        }
+        .fire-form .clearfix{
+            margin-bottom:10px;
+        }
+        .fire-form .clearfix .left{
+            float:left;
+            width:90px;
+            font-size:14px;
+            height:38px;
+            line-height:38px;
+        }
+        .fire-form .clearfix .right{
+            float:right;
+            width:calc(100% - 100px);
+        }
+        .fire-form .clearfix .right>input[type='text']{
+            line-height:38px;
+            height:38px;
+            border-radius:2px;
+            outline: none;
+            padding:0px 10px;
+            width:100%;
+            display:block;
+            border:1px solid #e6e6e6;
+        }
+        .chose{
+            line-height:38px;
+            height:38px;
+            color:#3c8dbc;
+            cursor: pointer;
+        }
+        .inlines{
+            height:38px;
+            line-height:38px;
+            margin-bottom:10px;
+        }
+        .in-input{
+            border-radius:2px;
+            outline: none;
+            padding: 0px 10px;
+            display: inline-block;
+            border: 1px solid #e6e6e6;
+            margin:0px 15px;
+            width: 100px;;
+        }
+        .typeSelect{
+            height:38px;
+            line-height:38px;
+            padding:0px 9px;
+            margin-right:10px;
+            border: 1px solid #e6e6e6;
+            border-radius:2px;
+            width:80px;
+            outline: none;
+        }
+        .save{
+            width: 153px;
+            height: 40px;
+            line-height: 40px;
+            border: 0;
+            background: #3c8dbc;
+            color: #FFF;
+            border-radius: 2px;
+            float: right;
+            outline: none;
+            margin-top:20px;
+        }
+        .content{
+            padding-bottom:80px;
+        }
+        .layerPerson{
+
+        }
+        .layerPerson>div{
+            float:left;
+            width:50%;
+        }
+        .layerPerson>div input{
+            top:2px;
+            position:relative;
+            margin-right:6px;
+        }
+    </style>
+</block>
+<block name="body">
+    <div class="wrapper">
+        <!--菜单-->
+        <include file="Base/menu" />
+
+        <!--内容页面-->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    新增公海
+                </h1>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <form class="fire-form" method="post" action="{:U('setting/edit_waters')}">
+                    <div class="clearfix">
+                        <div class="left">
+                            公海规则
+                        </div>
+                        <div class="right">
+                            <div class="inlines">
+                                <input type="radio" id="test" name="type" value="1" <eq name="info['type']" value="1">checked</eq> style="margin-right:5px;top:2px;position:relative;" />
+                                <label for="test">统一规则</label>
+                            </div>
+                            <div class="inlines">
+                                所有客户在<input type="text" class="in-input" name="time[0]" value="{$info['time'][0]}" maxlength="4" onblur="checkInter(this)" />天未跟进情况下，自动掉入公海
+                            </div>
+                            <div class="inlines">
+                                <input type="radio" id="test1" name="type" value="2" <eq name="info['type']" value="2">checked</eq> style="margin-right:5px;top:2px;position:relative;" />
+                                <label for="test1">根据客户类型</label>
+                            </div>
+
+                            <div class="inlines" style="margin-bottom:25px;">
+                                <!--<select class="typeSelect">-->
+                                    <!--<option>A类</option>-->
+                                    <!--<option>B类</option>-->
+                                <!--</select>-->
+                                A类类型客户在<input type="text" class="in-input" name="time[1]" value="{$info['time'][1]}" maxlength="4" onblur="checkInter(this)" />天未跟进情况下，自动掉入公海
+                            </div>
+                            <div class="inlines" style="margin-bottom:25px;">
+                                B类类型客户在<input type="text" class="in-input" name="time[2]" value="{$info['time'][2]}" maxlength="4" onblur="checkInter(this)" />天未跟进情况下，自动掉入公海
+                            </div>
+                            <div class="inlines" style="margin-bottom:25px;">
+                                C类类型客户在<input type="text" class="in-input" name="time[3]" value="{$info['time'][3]}" maxlength="4" onblur="checkInter(this)" />天未跟进情况下，自动掉入公海
+                            </div>
+
+                            <div class="inlines" style="margin-bottom:25px;">
+                                D类类型客户在<input type="text" class="in-input" name="time[4]" value="{$info['time'][4]}" maxlength="4" onblur="checkInter(this)" />天未跟进情况下，自动掉入公海
+                            </div>
+                            <div class="inlines" style="margin-bottom:25px;">
+                                无效类型客户在<input type="text" class="in-input" name="time[5]" value="{$info['time'][5]}" maxlength="4" onblur="checkInter(this)" />天未跟进情况下，自动掉入公海
+                            </div>
+                        </div>
+                    </div>
+                    <button class="save ajax-post" type="submit" target_form="fire-form">保存设置</button>
+                </form>
+            </section>
+            <!-- /.content -->
+        </div>
+
+        <!--尾部-->
+        <include file="Base/footer" />
+    </div>
+</block>
+
+<block name="script">
+</block>

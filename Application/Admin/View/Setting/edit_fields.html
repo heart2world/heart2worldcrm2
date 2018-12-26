@@ -1,0 +1,134 @@
+<extend name="Base::page"/>
+<block name="style">
+</block>
+<block name="body">
+    <div class="wrapper" style="padding-bottom:50px;">
+        <div class="content-wrapper" style="margin-left: 0px;">
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box box-primary">
+                            <form method="post" action="{:U('edit_fields')}" class="form-tagging">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label>字段类型</label>
+                                        <select class="form-control select2" name="type" id="type">
+                                            <volist name="type_data" id="vo">
+                                                <option value="{$vo['id']}" <eq name="vo['id']" value="$info['type']">selected</eq> >{$vo['title']}</option>
+                                            </volist>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>字段分类</label>
+                                        <select class="form-control select2" name="category_id">
+                                            <volist name="category_data" id="vo">
+                                                <option value="{$vo['id']}" <eq name="vo['id']" value="$info['category_id']">selected</eq> >{$vo['title']}</option>
+                                            </volist>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>字段名称</label>
+                                        <input type="text" name="title" class="form-control" value="{$info['title']}" maxlength="20" placeholder="请输入字段名称">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>提示语</label>
+                                        <input type="text" name="tips" class="form-control" value="{$info['tips']}" maxlength="20" placeholder="请输入提示语">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>是否启用</label>
+                                        <div class="radio">
+                                            <label style="margin-right: 50px;">
+                                                <input type="radio" name="is_open" value="1" <eq name="info['is_open']" value="1">checked</eq> >是
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="is_open" value="2" <eq name="info['is_open']" value="2">checked</eq> >否
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>是否必填</label>
+                                        <div class="radio">
+                                            <label style="margin-right: 50px;">
+                                                <input type="radio" name="is_must" value="1" <eq name="info['is_must']" value="1">checked</eq> >是
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="is_must" value="2" <eq name="info['is_must']" value="2">checked</eq> >否
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>排序序号</label>
+                                        <input type="text" name="sort" class="form-control" value="{$info['sort']}" maxlength="4" placeholder="序号越小越靠前" onkeyup="this.value=this.value.replace(/\D/g,'')">
+                                    </div>
+                                    <div class="form-group" id="option_button_show" <notin name="info['type']" value="3,4">style="display: none;"</notin> >
+                                        <button type="button" class="btn btn-primary" id="add_option">增加选择项</button>
+                                    </div>
+                                    <div id="option_show">
+                                        <volist name="info['extra']" id="vo">
+                                            <div class="row option_fields">
+                                                <div class="col-xs-7">
+                                                    <input type="text" class="form-control" name="extra_data[title][]" value="{$vo['title']|default=''}" maxlength="20" placeholder="请输入选择项">
+                                                </div>
+                                                <div class="col-xs-3">
+                                                    <input type="text" class="form-control" name="extra_data[sort][]" value="{$vo['sort']|default=''}" maxlength="4" placeholder="请输入排序" onkeyup="this.value=this.value.replace(/\D/g,'')">
+                                                </div>
+                                                <div class="col-xs-1" style="line-height: 34px;">
+                                                    <a class="btn btn-danger btn-xs" onclick="del_option(this)">x</a>
+                                                </div>
+                                            </div>
+                                        </volist>
+                                    </div>
+                                </div>
+                                <div class="box-footer fixedBotton">
+                                    <input type="hidden" name="id" value="{$info['id']}" />
+                                    <button type="submit" class="btn btn-primary ajax-post" target_form="form-tagging">保存</button>
+                                </div>
+                            </form>
+                            <div id="option_data" style="display: none;">
+                                <div class="row option_fields">
+                                    <div class="col-xs-7">
+                                        <input type="text" class="form-control" name="extra_data[title][]" maxlength="20" placeholder="请输入选择项">
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input type="text" class="form-control" name="extra_data[sort][]" maxlength="4" placeholder="请输入排序">
+                                    </div>
+                                    <div class="col-xs-1" style="line-height: 34px;">
+                                        <a class="btn btn-danger btn-xs" onclick="del_option(this)">x</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <!-- Select2 -->
+    <script src="__JS__/select2.full.min.js"></script>
+<script>
+    $(function(){
+        //选择字段类型
+        $("#type").change(function(){
+            var val = $(this).val();
+            if(val == 3 || val == 4){
+                $("#option_button_show").show();
+            }else{
+                $("#option_button_show").hide();
+                $("#option_show").html('');
+            }
+        });
+        //增加选项
+        $("#add_option").click(function(){
+            $("#option_show").append($("#option_data").html());
+        });
+        $('.select2').select2();
+    });
+    //删除选择
+    function del_option(obj){
+        $(obj).parents(".option_fields").remove();
+    }
+</script>
+</block>

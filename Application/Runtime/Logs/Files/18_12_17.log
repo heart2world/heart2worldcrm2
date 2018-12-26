@@ -1,0 +1,78 @@
+[ 2018-12-17T19:22:04+08:00 ] 222.182.199.82 /files/Image/index/sha1/e7b722c19f69d21e915b64aaa0fe06c8e5e5b72d
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000977s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000977s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = 'e7b722c19f69d21e915b64aaa0fe06c8e5e5b72d' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-12-17T19:22:04+08:00 ] 222.182.199.82 /files/Image/index/sha1/a5742eeb938586a9e31bf498d841d59338aab6cf
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000976s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = 'a5742eeb938586a9e31bf498d841d59338aab6cf' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-12-17T19:22:04+08:00 ] 222.182.199.82 /files/Image/index/sha1/9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000977s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0010s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = '9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000976s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000976s ]
+
+[ 2018-12-17T19:23:03+08:00 ] 61.151.178.164 /files/Image/index/sha1/e7b722c19f69d21e915b64aaa0fe06c8e5e5b72d
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = 'e7b722c19f69d21e915b64aaa0fe06c8e5e5b72d' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-12-17T19:23:03+08:00 ] 61.129.6.174 /files/Image/index/sha1/a5742eeb938586a9e31bf498d841d59338aab6cf
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000977s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0010s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = 'a5742eeb938586a9e31bf498d841d59338aab6cf' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-12-17T19:23:03+08:00 ] 101.91.62.89 /files/Image/index/sha1/9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000976s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000977s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0010s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = '9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+

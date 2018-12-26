@@ -1,0 +1,53 @@
+<extend name="Base::page"/>
+<block name="style">
+    <style>
+        .info_style{width: 30%;}
+    </style>
+</block>
+<block name="body">
+    <div class="wrapper">
+        <div class="content-wrapper" style="margin-left: 0px;">
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box box-primary">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label class="info_style">客户名称</label>
+                                        <span>{$info['name']}</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="info_style">手机号</label>
+                                        <span>{$info['mobile']}</span>
+                                    </div>
+                                    <volist name="info['fields_data']" id="vo">
+                                    <div class="form-group">
+                                        <label class="info_style">{$vo['title']}</label>
+                                        <span>{$vo['content']}</span>
+                                    </div>
+                                    </volist>
+                                    <div class="form-group">
+                                        <label class="info_style">下次跟进时间</label>
+                                        <span>{$info['next_follow_time']}</span>
+                                    </div>
+                                    <div class="box-footer">
+                                        <a class="btn btn-primary" id="complete" data-id="{$info['id']}">完整信息</a>
+                                        <a class="btn btn-primary" href="{:U('add_follow',array('customer_id'=>$info['id']))}" title="写跟进" w="600" h="500">写跟进</a>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <script>
+        //跳转完整信息
+        $("#complete").click(function(){
+            window.top.location.href = "{:U('info',array('id'=>$info['id']))}";
+        });
+    </script>
+</block>

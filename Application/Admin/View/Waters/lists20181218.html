@@ -1,0 +1,541 @@
+<extend name="Base::page"/>
+<block name="style">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="__CSS__/dataTables.bootstrap.min.css">
+    <style>
+        .screen{line-height: 30px;margin-bottom: 10px;}
+        .one_option_title{width: 120px;}
+        .one_option{padding: 2px 10px;color:#444;}
+        .button_show{width: 50%;float: left;}
+        .search{width: 50%;float: right;text-align: right;}
+        .option_on{background-color: #3c8dbc;color: #fff !important;}
+        .activeTd{background:#cee3ff!important;}
+       	@media (min-width: 767px){.pageFixed{position: fixed; bottom: 0; right: 0; width: calc(100% - 230px); background: #FFFF; padding: 12px 20px;padding-bottom: 33px; box-shadow: 0px -2px 3px #f1f1f1;z-index:9999998;}}
+        .buttonFixed{ position: absolute; right: 0; height: 0; width: 0; top: 0; background: #FFF; z-index: 9999; display:none; }
+        .buttonFixed>div:nth-child(1) div{ font-weight: bold;border-bottom-width: 3px; height:43px;line-height: 40px; }
+        .buttonFixed>div:nth-child(1) div{margin-top:0px!important;}
+        .buttonFixed>div:nth-of-type(even) { background-color: #f9f9f9; }
+        .buttonFixed>div:nth-of-type(odd){background:#f2f2f2;}
+        .buttonFixed>div div{ padding:0 8px; border: 1px solid #f4f4f4;margin-top: -1px;height:43px; vertical-align: top; font-size:14px; color: #333; line-height: 43px; overflow:hidden; float:left; text-align:center; }
+        .buttonFixed>div div:nth-child(1){ border-right:0; }
+        .buttonFixed>div div:nth-child(2){ padding-right: 30px; text-align:left; }
+        table.dataTable{margin-top:0!important;margin-bottom:0!important;}
+        #scrollfather1, #scrollfather2 { background: rgba(230, 230, 230, .5); float: left; position: relative; overflow: hidden; width: 100% }
+        .scrollson { float: left; width: 100% }
+        .scroll_x {     background: #C1C1C1; position: absolute; bottom: 0; height: 14px; }
+        .scroll_xmove { background: #F1F1F1; height: 14px; position: absolute; bottom: 0; width: 100%; z-index: 1; position: fixed; bottom: 13px; z-index: 9999999; }
+    	.main-footer{display:none;}
+    	.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th{line-height:24px;height:42px;box-sizing: border-box;}
+    </style>
+</block>
+<block name="body">
+    <div class="wrapper" style="background:rgb(236, 240, 245);">
+        <!--菜单-->
+        <include file="Base/menu" />
+
+        <!--内容页面-->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    全部客户
+                </h1>
+            </section>
+
+            <!-- Main content -->
+            <section class="content"  style="margin-bottom:90px;">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- /.box -->
+
+                        <div class="box">
+                            <div class="box-header">
+                               <!--筛选-->
+                                <div class="screen">
+                                    <volist name="info['screen_data']['choice']" id="vo" key="k">
+	                                    <div class="ones_option" name="{$vo['fields_text']}" style="display:<if condition="$k gt 5">none</if>">
+	                                        <label class="one_option_title">{$vo['title']}：</label>
+	                                        <a href="#" class="one_option option_on" value="">全部</a>
+	                                        <volist name="vo['extra']" id="item">
+	                                            <notempty name="item['id']">
+	                                                <a href="#" class="one_option" value="{$item['id']}" <eq name="item['other_type']" value="time">other_type="time"</eq> >{$item['title']}</a>
+	                                                <eq name="item['other_type']" value="time">
+	                                                    <input type="text" name="time_{$vo['fields_text']}" id="time_{$vo['fields_text']}" readonly style="height: 24px;display: none;"/>
+	                                                </eq>
+	                                            <else/>
+	                                                <a href="#" class="one_option" value="{$item['title']}" >{$item['title']}</a>
+	                                            </notempty>
+	                                        </volist>
+	                                    </div>
+	                                    <if condition="$k gt 5 && count($info['screen_data']['choice']) eq $k">
+	                                    	<a href="javaScript:void(0)" onclick="openMore(this)">展开更多</a>
+	                                    </if>
+	                                    
+                                    </volist>
+                                </div>
+                                <!--搜索-->
+                                <div>
+                                    <!--按钮显示-->
+                                    <div class="button_show">
+                                        <a class="btn btn-primary" id="excel" href="#">导出excel</a>
+                                        <a class="btn btn-primary popshow" url="{:U('edit_fields_screen')}" title="自定义筛选字段" w="600" h="500">筛选设置</a>
+                                    </div>
+                                    <!--搜索显示-->
+                                    <div class="search">
+                                        <select class="select2 search_mark" style="width: 100px;" name="search">
+                                            <volist name="info['screen_data']['text']" id="vo">
+                                                <option value="{$vo['fields_text']}" >{$vo['title']}</option>
+                                            </volist>
+                                        </select>
+                                        <input type="text" name="search_title" class="form-control search_title" style="display: inline;width: 30%; vertical-align: bottom" value="" maxlength="20" placeholder="请输入">
+                                        <button type="button" class="btn btn-primary" id="search">查询</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="box-body">
+                                <div class="dataTables_wrapper form-inline dt-bootstrap no-footer" style="overflow: hidden">
+                                	<div class="scrollfather" id="scrollfather2">
+										<div class="scrollson" style="min-width:100%;width:auto;">
+											<div class="">
+		                                        <div class="col-sm-12" style="padding:0;">
+		                                            <table class="table table-bordered table-striped dataTable">
+		                                                <thead>
+		                                                <tr>
+		                                                    <td align="center" style="white-space: nowrap;"><input type="checkbox" class="check_all"></td>
+		                                                    <volist name="info['show_data']" id="vo">
+		                                                    <th style="white-space: nowrap;" class="sorting" name="{$vo['fields_text']}" onclick="sort(this)">{$vo['title']}</th>
+		                                                    </volist>
+		                                                    <td style="white-space: nowrap;"><a href="#" class="popshow" url="{:U('edit_fields_show')}" title="自定义显示列" w="600" h="500"><i class="fa fa-fw fa-cog"></i></a></td>
+		                                                </tr>
+		                                                </thead>
+		                                                <tbody>
+		                                            	
+		                                                </tbody>
+		                                            </table>
+		                                        </div>
+		                                    </div>
+										</div>
+										<div class="scroll_xmove">
+											<div class="scroll_x" unorbind="unbind"></div>
+										</div>
+									</div>
+                                    <!--分页-->
+                                    <div class="page pageFixed"></div>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+
+        <!--尾部-->
+        <include file="Base/footer" />
+    </div>
+</block>
+
+<block name="script">
+	<script>eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('$.30.2Z=Y(a){16 e,f,h,i,j,k,l,m,n,o,p,s,t,u,v,w,x,y,z,A,B,C,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,b=V,c={1d:"2W",1C:"33",1I:"1I",1Z:"1Z",1S:"1S",1V:"1V",1u:"",W:"1c",13:0,2i:10,2j:8,1b:"2M",1R:"3",2l:0,2f:".2T",2k:"2I",2d:!1,2h:!1,2g:"2L",2e:!0},d=$.2S({},c,a);1j V.2q=d,V.2N="",F=d.1d,G=d.1C,H=d.1Z,I=d.1I,J=d.1V,K=d.1S,L=d.2i,M=d.2j,N=d.2k,O=N+F,P=d.2h,Q=d.2g,R=d.2d,S=d.2e,T=d.2f,(1==L||"2R"==L)&&(L=5*($("#"+F+" ."+G).4()/$("#"+F).4()),5>=L&&(L=5)),P&&(L=M),d["2l"]?("1c"==d["W"]?($("#"+F+" ."+G).2("D-3","0"),$("#"+F+" ."+I).2("3","0")):"1e"==d["W"]&&($("#"+F+" ."+G).2("D-6","0"),$("#"+F+" ."+K).2("6","0")),1n 0):"21"==$("#"+F).2("2O")?!1:1n 0==$("#"+F).1f()?!1:(f=$("#"+F).1f()["3"],e=$("#"+F).4(),h=$("#"+F+" ."+G).4(),t=$("#"+F).1f()["6"],s=$("#"+F).7(),u=$("#"+F+" ."+G).7(),$("#"+F+" ."+H).4($("#"+F).4()),$("#"+F+" ."+J).7(Z($("#"+F).7())),h>e?($("#"+F+" ."+I).1D(),$("#"+F+" ."+H).1D(),i=e*(e/h),$("#"+F+" ."+I).4(i)):($("#"+F+" ."+I).1A(),$("#"+F+" ."+H).1A()),u>s?($("#"+F+" ."+K).1D(),$("#"+F+" ."+J).1D(),v=s*(s/u),$("#"+F+" ."+K).7(v)):($("#"+F+" ."+K).1A(),$("#"+F+" ."+J).1A()),V.1F=Y(a){16 d,g,c="";1U($("."+a["1C"]).2c(Y(){$("#"+a["1b"]).1m($(V).2n(T).19("1L")),c=$("#"+a["1b"]).1m(),a.W=$("#"+c).19("W"),$("#"+c).4()<$(V).4()&&"1c"==a.W||$("#"+c).4()>$(V).4()&&"1c"==a.W&&3.1l.1g!=1l.1g||$("#"+c).7()<$(V).7()&&"1e"==a.W||$("#"+c).7()>$(V).7()&&"1e"==a.W&&3.1l.1g!=1l.1g?S&&(X.18.11=Y(){1j!1}):X.18.11=17,O=N+c}),1n 0==$("#"+F).1f())2H 2J 2K("鏈兘姝ｇ‘鑾峰彇锛�"+F+"锛夌殑1f()");f=$("#"+F).1f()["3"],e=$("#"+F).4(),h=$("#"+F+" ."+G).4(),t=$("#"+F).1f()["6"],s=$("#"+F).7(),u=$("#"+F+" ."+G).7(),$("#"+F+" ."+H).4($("#"+F).4()),$("#"+F+" ."+J).7(Z($("#"+F).7())),h>e?($("#"+F+" ."+I).1D(),$("#"+F+" ."+H).1D(),i=e*(e/h),$("#"+F+" ."+I).4(i)):($("#"+F+" ."+I).1A(),$("#"+F+" ."+H).1A()),u>s?($("#"+F+" ."+K).1D(),$("#"+F+" ."+J).1D(),v=s*(s/u),$("#"+F+" ."+K).7(v)):($("#"+F+" ."+K).1A(),$("#"+F+" ."+J).1A()),"1c"==a.W?("1Q"==$("#"+F+" ."+I).2("3")&&$("#"+F+" ."+I).2("3","0"),n=1p($("#"+F+" ."+I).2("3")),o=Z(e-i),d=(h-e)/o,p=n*d,a["13"]>=0?n>=o?($("#"+F+" ."+I).2("3",o+"E"),$("#"+F+" ."+G).2("D-3",-h+e+"E"),U[Q]&&(a.1u="1w",U[Q](b))):1p($("#"+F+" ."+I).2("3"))+1p($("#"+F+" ."+I).2("4"))>=1p(e)-L?($("#"+F+" ."+I).2("3",o+"E"),$("#"+F+" ."+G).2("D-3",-h+e+"E")):($("#"+F+" ."+I).2("3",(p+L)/d+"E"),$("#"+F+" ."+G).2("D-3",-p-L+"E")):a["13"]<0&&(0>=n?($("#"+F+" ."+I).2("3","12"),$("#"+F+" ."+G).2("D-3","12")):0>=n-d/L?($("#"+F+" ."+I).2("3","12"),$("#"+F+" ."+G).2("D-3","12")):($("#"+F+" ."+I).2("3",(p-L)/d+"E"),$("#"+F+" ."+G).2("D-3",-p+L+"E")))):"1e"==a.W&&("1Q"==$("#"+F+" ."+K).2("6")&&$("#"+F+" ."+K).2("6","0"),A=Z($("#"+F+" ."+K).2("6")),B=s-v,d=(u-s)/B,g=A*d,a["13"]>=0?A>=B?($("#"+F+" ."+G).2("D-6",-u+s+"E"),$("#"+F+" ."+K).2("6",B+"E"),U[Q]&&(a.1u="1w",U[Q](b))):A+Z($("#"+F+" ."+K).2("7"))>=s-L?($("#"+F+" ."+K).2("6",B+"E"),$("#"+F+" ."+G).2("D-6",-u+s+"E")):($("#"+F+" ."+K).2("6",(g+L)/d+"E"),$("#"+F+" ."+G).2("D-6",-g-L+"E")):a["13"]<0&&(0>=A?($("#"+F+" ."+K).2("6","12"),$("#"+F+" ."+G).2("D-6","12")):0>=A-B/B/L?($("#"+F+" ."+K).2("6","12"),$("#"+F+" ."+G).2("D-6","12")):($("#"+F+" ."+K).2("6",(g-L)/d+"E"),$("#"+F+" ."+G).2("D-6",-g+L+"E")))),U[O]&&U[O](F,a["13"])},V.25=Y(a){1U(!1v.1r.1s(/(2a|26|27)/i)){16 c,d,g,i;c=$("#"+a["1b"]).1m(),d=$("#"+c).7(),g=$("#"+c).4(),i=!1,O=N+c,$("#"+c+" ."+I).2m(Y(d){d=U.1a||d,d.1h?d.1h():d.1B=!1,i=!0,$("#"+c+" ."+I).19("1x","1E"),j=d.1q||d.1k,"1Q"==$("#"+c+" ."+I).2("3")&&$("#"+c+" ."+I).2("3","0"),n=Z($("#"+c+" ."+I).2("3")),m=j-f-n,$(X).2s(Y(){i=!1,$("#"+c+" ."+I).19("1x","1G"),$("#"+c+" ."+K).19("1x","1G"),$("#"+a["1b"]).1m(c),X.18.11=17,U[O]&&U[O](c,a["13"])}),i?$(X).2t(Y(d){1U(d=U.1a||d,d.1h?(d.1h(),d.1P()):(d.1B=!1,d.2r=!0),"1E"==$("#"+c+" ."+I).19("1x")){16 g=$("#"+c+" ."+I).4();n=Z($("#"+c+" ."+I).2("3")),k=d.1q||d.1k,l=k-f-m,o=e-g,h=$("#"+c+" ."+G).4(),e=$("#"+c).4(),p=n*((h-e)/o),0>=l?($("#"+c+" ."+I).2("3","12"),$("#"+c+" ."+G).2("D-3","12")):l>=o?($("#"+c+" ."+I).2("3",o+"E"),$("#"+c+" ."+G).2("D-3",-(h-e)+"E"),U[Q]&&(a.1u="1w",U[Q](b))):($("#"+c+" ."+I).2("3",l+"E"),$("#"+c+" ."+G).2("D-3",-p+"E"))}}):X.18.11=17}),$("#"+c+" ."+K).2m(Y(d){d=U.1a||d,d.1h?d.1h():d.1B=!1,$("#"+c+" ."+K).19("1x","1E"),i=!0,w=d.1o||d.1i,"1Q"==$("#"+c+" ."+K).2("6")&&$("#"+c+" ."+K).2("6","0"),A=Z($("#"+c+" ."+K).2("6")),z=w-t-A,$(X).2s(Y(){i=!1,$("#"+c+" ."+I).19("1x","1G"),$("#"+c+" ."+K).19("1x","1G"),$("#"+a["1b"]).1m(c),X.18.11=17,U[O]&&U[O](c,a["13"])}),i?$(X).2t(Y(d){16 e;d=U.1a||d,d.1h?(d.1h(),d.1P()):(d.1B=!1,d.2r=!0),"1E"==$("#"+c+" ."+K).19("1x")&&(e=$("#"+c+" ."+K).7(),A=Z($("#"+c+" ."+K).2("6")),x=d.1o||d.1i,y=x-t-z,B=s-e,u=$("#"+c+" ."+G).7(),s=$("#"+c).7(),C=A*((u-s)/B),"1E"==$("#"+c+" ."+K).19("1x")&&(0>=y?($("#"+c+" ."+K).2("6","12"),$("#"+c+" ."+G).2("D-6","12")):y>=B?($("#"+c+" ."+K).2("6",B+"E"),$("#"+c+" ."+G).2("D-6",-(u-s)+"E"),U[Q]&&(a.1u="1w",U[Q](b))):($("#"+c+" ."+K).2("6",y+"E"),$("#"+c+" ."+G).2("D-6",-C+"E"))))}):X.18.11=17})}},V.2b=Y(){16 a,b,c,f,g,h,i,j,k;"1w"==d.1u&&("1c"==d.W?(a=$("#"+F+" ."+G).4(),b=e*(e/a),$("#"+F+" ."+I).4(b),c=Z(e-b),f=(a-e)/c,g=14.15(1p($("#"+F+" ."+G).2("D-3"))),$("#"+F+" ."+I).2("3",g/f+"E")):"1e"==d.W&&(h=$("#"+F+" ."+G).7(),i=s*(s/h),$("#"+F+" ."+K).7(i),j=Z(s-i),f=(h-s)/j,k=14.15(1p($("#"+F+" ."+G).2("D-6"))),$("#"+F+" ."+K).2("6",k/f+"E")))},V.1y=Y(a){16 h,i,j,c="",d=U.1a||a,e=b.2q,f=d.1o||d.1i,g=d.1q||d.1k;$("."+e["1C"]).2c(Y(){$("#"+e["1b"]).1m($(V).2n(T).19("1L")),c=$("#"+e["1b"]).1m(),e.W=$("#"+c).19("W"),f=d.1o||d.1i,g=d.1q||d.1k,$("#"+c).4()<$(V).4()&&"1c"==e.W||$("#"+c).4()>$(V).4()&&"1c"==e.W&&3.1l.1g!=1l.1g||$("#"+c).7()<$(V).7()&&"1e"==e.W||$("#"+c).7()>$(V).7()&&"1e"==e.W&&3.1l.1g!=1l.1g?S&&(X.18.11=Y(){1j!1}):X.18.11=17,O=N+c}),F=$("#"+e["1b"]).1m(),$("#"+F).4()<$("#"+F+" ."+G).4()&&"1c"==e.W||$("#"+F).4()>$("#"+F+" ."+G).4()&&"1c"==e.W&&3.1l.1g!=1l.1g||$("#"+F).7()<$("#"+F+" ."+G).7()&&"1e"==e.W||$("#"+F).7()>$("#"+F+" ."+G).7()&&"1e"==e.W&&3.1l.1g!=1l.1g?(S&&(X.18.11=Y(){1j!1}),1n 0!=X.1t(F).2Q&&(i=$("#"+F).1f()["3"],h=$("#"+F).1f()["6"],1n 0==f&&(f=h),1n 0==g&&(g=i),f>=h&&f<=h+$("#"+F).7()&&g>=i&&g<=i+$("#"+F).4()?d.2o?(j=Z(d.2o),e["1d"]=F,e["13"]=j>0?-1:1,b.1F(e)):d.2p&&(j=Z(d.2p),e["1d"]=F,e["13"]=j>=0?1:-1,b.1F(e)):X.18.11=17)):X.18.11=17},V.28=Y(a){16 c,e,f,b=U.1a||a;R&&($("18").1E("22",Y(a){16 b=U.1a||a;b.1h(),b.1P()}),b.1h()),$("#"+d["1b"]).1m($(V).19("1L")),d.W=$(V).19("W"),d.1d=$(V).19("1L"),c=b.2u[0],e=1O(c.1o),f=1O(c.1q),1X=e,20=f,1T=e,1W=f},V.2C=Y(a){16 j,k,f,g,h,c=U.1a||a,e=$("#"+d["1b"]).1m();1j $("#"+e).4()>=$("#"+e+" ."+G).4()&&"1c"==d.W||$("#"+e).7()>$("#"+e+" ."+G).7()&&"1e"==d.W?!1:(R&&($("18").1E("23",Y(a){16 b=U.1a||a;b.1h(),b.1P()}),c.1h()),f=c.2u[0],g=1O(f.1o),h=1O(f.1q),j=h-20,k=g-1X,1T=g,1W=h,14.15(j)>14.15(k)?(d["13"]=j>=0?-1:1,b.1F(d)):(d["13"]=k>=0?-1:1,b.1F(d)),1n 0)},V.2E=Y(a){16 c,e;U.1a||a,c=$("#"+d["1b"]).1m(),e=!0,(14.15(1W)-14.15(20)>=5||14.15(1T)-14.15(1X)>=5)&&(e=!1),$("18").1G("22"),$("18").1G("23"),U["29"]&&e&&U["29"](c)},V.2y=Y(a){16 c,d,e,f,g,j;$("18").35("."+a.1b).34<1&&$("18").37(\'<2v 36="38" 32="\'+a.1b+\'" 1L="\'+a.1b+\'" 2U="\'+F+\'">\'),$("#"+F).19("W",a.W),$("#"+a.1b).1m(F),V.1F(a),V.2b(),V.25(a),V.1y(U),1v.1r.1s(/(2a|26|27|2Y|2X)/i)||P?(c=X.1t(F),c.1K("22",V.28,!1),c.1K("23",V.2C,!1),c.1K("2V",V.2E,!1),P&&(17!=1v.1r.1z().1s(/2F/)?X.1K("2G",V.1y,!1):U.11=X.11=V.1y)):X.1K?17!=1v.1r.1z().1s(/2F/)?X.1K("2G",V.1y,!1):17!=1v.1r.1z().1s(/.(1H)/)?(d||(U.11=X.11=V.1y),d=!1,e=0,f=0,X.1t(F).2B=Y(c){16 g,j;1j d=!1,c=U.1a||c,$("#"+F+" 2v").2x(Y(){$(V).2D()}),$("#"+F+" 31").2x(Y(){$(V).2D()}),c.1B=!1,$("#"+F+" ."+G).2("2A","21"),X.1t(F).1J=Y(){1j!1},$("#"+F).4()>=$("#"+F+" ."+G).4()&&"1c"==a.W||$("#"+F).7()>$("#"+F+" ."+G).7()&&"1e"==a.W?!1:(g=$("#"+F).4(),j=$("#"+F).7(),d=!0,17!=1v.1r.1z().1s(/.(1H)[\\/: ]([9.]+)/)?(e=c.1i,f=c.1k):(e=c.1o,f=c.1q),X.2w=Y(b){16 b=U.1a||b;d=!1,X.1J=17,U[O]&&U[O](F,a["13"])},X.1t(F).2z=Y(c){16 k,l,m,n,o,p,q,r,s,t;c=U.1a||c,k=$("#"+F).1f().6,l=$("#"+F).1f().3,d&&(X.1t(F).1J=Y(){1j!1},c.1i<k+j&&c.1i>k&&c.1k>l&&c.1k<l+g?(17!=1v.1r.1z().1s(/.(1H)[\\/: ]([9.]+)/)?(m=c.1i-e,n=c.1k-f):(m=c.1o-e,n=c.1q-f),14.15(m)-14.15(n)>0?"1e"==a.W&&(o=1p($("#"+F+" ."+I).2("6")),p=$("#"+F).7(),v=$("#"+F+" ."+K).7(),u=$("#"+F+" ."+G).7(),1N=Z(p-v),q=(u-p)/1N,1Y=o*q,m>=0?(a["13"]=1,Z($("#"+F+" ."+G).2("D-6"))>=0?($("#"+F+" ."+G).2("D-6","12"),$("#"+F+" ."+I).2("6","12")):($("#"+F+" ."+G).2("D-6",Z($("#"+F+" ."+G).2("D-6"))+M+"E"),$("#"+F+" ."+I).2("6",(1Y-M)/q+"E"))):(a["13"]=-1,14.15(Z($("#"+F+" ."+G).2("D-6")))>=$("#"+F+" ."+G).7()-$("#"+F).7()?($("#"+F+" ."+G).2("D-6",-($("#"+F+" ."+G).7()-$("#"+F).7())+"E"),$("#"+F+" ."+I).2("6",$("#"+F+" ."+H).7()-$("#"+F+" ."+I).7()+"E"),U[Q]&&(a.1u="1w",U[Q](b))):($("#"+F+" ."+G).2("D-6",-14.15(Z($("#"+F+" ."+G).2("D-6")))-M+"E"),$("#"+F+" ."+I).2("6",(1Y+M)/q+"E")))):(r=1p($("#"+F+" ."+I).2("3")),s=$("#"+F).4(),i=$("#"+F+" ."+I).4(),h=$("#"+F+" ."+G).4(),1M=Z(s-i),q=(h-s)/1M,24=r*q,"1c"==a.W&&(n>0?(a["13"]=1,14.15(Z($("#"+F+" ."+G).2("D-3")))>=$("#"+F+" ."+G).4()-$("#"+F).4()?($("#"+F+" ."+G).2("D-3",-($("#"+F+" ."+G).4()-$("#"+F).4())+"E"),$("#"+F+" ."+I).2("3",$("#"+F+" ."+H).4()-$("#"+F+" ."+I).4()+"E"),U[Q]&&(a.1u="1w",U[Q](b))):(t=Z($("#"+F+" ."+G).2("D-3"))-M,$("#"+F+" ."+G).2("D-3",t+"E"),$("#"+F+" ."+I).2("3",(24+M)/q+"E"))):(a["13"]=-1,Z($("#"+F+" ."+G).2("D-3"))>=0?($("#"+F+" ."+G).2("D-3","12"),$("#"+F+" ."+I).2("3","12")):0>=r-(h-s)/1M/M?($("#"+F+" ."+I).2("3","12"),$("#"+F+" ."+G).2("D-3","12")):(t=Z($("#"+F+" ."+G).2("D-3"))+M,$("#"+F+" ."+G).2("D-3",t+"E"),$("#"+F+" ."+I).2("3",(24-M)/q+"E")))))):d=!1)},1n 0)}):U.11=X.11=V.1y:17!=1v.1r.1z().1s(/.(1H)/)?(d||(U.11=X.11=V.1y),d=!1,e=0,f=0,X.1t(F).2B=Y(c){16 g,j;1j c=U.1a||c,c.1B=!1,$("#"+F+" ."+G).2("2A","21"),X.1t(F).1J=Y(){1j!1},$("#"+F).4()>=$("#"+F+" ."+G).4()&&"1c"==a.W||$("#"+F).7()>$("#"+F+" ."+G).7()&&"1e"==a.W?!1:(g=$("#"+F).4(),j=$("#"+F).7(),d=!0,17!=1v.1r.1z().1s(/.(1H)[\\/: ]([(8).]+)/)?(e=c.1i,f=c.1k):(e=c.1o,f=c.1q),X.2w=Y(a){16 a=U.1a||a;a.1B=!1,d=!1,X.1J=17,U[O]&&U[O](F)},X.1t(F).2z=Y(c){16 k,l,m,n,o,p,q,r,s,t,w;1j c=U.1a||c,c.1B=!1,$("#"+F).4()>=$("#"+F+" ."+G).4()&&"1c"==a.W||$("#"+F).7()>$("#"+F+" ."+G).7()&&"1e"==a.W?!1:(k=$("#"+F).1f().6,l=$("#"+F).1f().3,d&&(X.1t(F).1J=Y(){1j!1},c.1i<k+j&&c.1i>k&&c.1k>l&&c.1k<l+g&&(17!=1v.1r.1z().1s(/.(1H)[\\/: ]([8.]+)/)?(m=c.1i-e,n=c.1k-f):(m=c.1o-e,n=c.1q-f),14.15(m)-14.15(n)>0?"1e"==a.W&&(o=1p($("#"+F+" ."+I).2("6")),p=$("#"+F).7(),v=$("#"+F+" ."+K).7(),u=$("#"+F+" ."+G).7(),1N=Z(p-v),q=(u-p)/1N,r=o*q,m>=0?(a["13"]=1,Z($("#"+F+" ."+G).2("D-6"))>=0?($("#"+F+" ."+G).2("D-6","12"),$("#"+F+" ."+I).2("6","12")):($("#"+F+" ."+G).2("D-6",Z($("#"+F+" ."+G).2("D-6"))+L+"E"),$("#"+F+" ."+I).2("6",(r-L)/q+"E"))):(a["13"]=-1,14.15(Z($("#"+F+" ."+G).2("D-6")))>=$("#"+F+" ."+G).7()-$("#"+F).7()?($("#"+F+" ."+G).2("D-6",-($("#"+F+" ."+G).7()-$("#"+F).7())+"E"),$("#"+F+" ."+I).2("6",$("#"+F+" ."+H).7()-$("#"+F+" ."+I).7()+"E"),U[Q]&&(a.1u="1w",U[Q](b))):($("#"+F+" ."+G).2("D-6",-14.15(Z($("#"+F+" ."+G).2("D-6")))-L+"E"),$("#"+F+" ."+I).2("6",(r+L)/q+"E")))):(s=1p($("#"+F+" ."+I).2("3")),t=$("#"+F).4(),i=$("#"+F+" ."+I).4(),h=$("#"+F+" ."+G).4(),1M=Z(t-i),q=(h-t)/1M,w=s*q,"1c"==a.W&&(n>0?(a["13"]=1,Z($("#"+F+" ."+G).2("D-3"))>=0?($("#"+F+" ."+G).2("D-3","12"),$("#"+F+" ."+I).2("3","12")):($("#"+F+" ."+G).2("D-3",Z($("#"+F+" ."+G).2("D-3"))+L+"E"),$("#"+F+" ."+I).2("3",(w-L)/q+"E"))):(a["13"]=-1,14.15(Z($("#"+F+" ."+G).2("D-3")))>=$("#"+F+" ."+G).4()-$("#"+F).4()?($("#"+F+" ."+G).2("D-3",-($("#"+F+" ."+G).4()-$("#"+F).4())+"E"),$("#"+F+" ."+I).2("3",$("#"+F+" ."+H).4()-$("#"+F+" ."+I).4()+"E"),U[Q]&&(a.1u="1w",U[Q](b))):($("#"+F+" ."+G).2("D-3",-14.15(Z($("#"+F+" ."+G).2("D-3")))-L+"E"),$("#"+F+" ."+I).2("3",(w+L)/q+"E"))))))),1n 0)},1n 0)},(U.11||X.11)&&b.1F(a)):U.11=X.11=V.1y,"3"==a["1R"]?($("#"+a["1d"]+" ."+a["1C"]).2("D-3","0"),$("#"+a["1d"]+" ."+a["1I"]).2("3","0")):"2P"==a["1R"]&&$("#"+a["1d"]).4()<=$("#"+a["1d"]+" ."+a["1C"]).4()&&(g=$("#"+a["1d"]).4()-$("#"+a["1d"]+" ."+a["1I"]).4(),j=$("#"+a["1d"]+" ."+a["1C"]).4()-$("#"+a["1d"]).4(),$("#"+a["1d"]+" ."+a["1C"]).2("D-3",-j+"E"),$("#"+a["1d"]+" ."+a["1I"]).2("3",g+"E"))},V.2y(d),1n 0)};',62,195,'||css|top|height||left|width||||||||||||||||||||||||||||||||margin|px||||||||||||||||window|this|wheelxory|document|function|parseInt||onmousewheel|0px|wheelval|Math|abs|var|null|body|attr|event|getfatherid|wheely|father|wheelx|offset|href|preventDefault|clientX|return|clientY|location|val|void|pageX|parseFloat|pageY|userAgent|match|getElementById|deloradd|navigator|adddel|unorbind|scrollFunc|toLowerCase|hide|returnValue|soncontent|show|bind|scrollings|unbind|msie|scroll_y|onselectstart|addEventListener|id|hei_e_s_y_heibole|wid_e_s_widbole|Number|stopPropagation|auto|scrolltop|scroll_x|lastX|if|scroll_xmove|lastY|startX|wid_scrollwidthbole|scroll_ymove|startY|none|touchstart|touchmove|hei_scrollheightbole|onmouseclick|Android|iPad|touchStart|scrollTouchPreventDefault|iPhone|addElement|mouseover|touchpreventDefault|mousewheelflag|scrolltarget|scrollbottomfn|boleonclick|marginstep|marginstepbole|smscrollfnprev|resetinit|mousedown|parents|wheelDelta|detail|sets|cancelBubble|mouseup|mousemove|touches|input|onmouseup|click|init|onmousemove|transition|onmousedown|touchMove|focus|touchEnd|firefox|DOMMouseScroll|throw|phone_|new|Error|topmax|whichscroll|clickfatherid|display|bottom|offsetTop|true|extend|scrollfather|value|touchend|scrollfather1|uc|Mobile|shineonScroll|fn|textarea|class|scrollson|length|find|type|append|hidden'.split('|'),0,{}))</script>
+    
+    <!-- Select2 -->
+    <script src="__JS__/select2.full.min.js"></script>
+    <!--laydate-->
+    <script src="__PUBLIC__/laydate/laydate.js"></script>
+    <script>
+    	function sc(){
+			$().shineonScroll({
+			    "father": "scrollfather2", //当前区域id
+			    "wheelxory": "wheelx", //滚动类型wheelx轴，wheely轴
+			    "scrolltarget": ".scrollfather", //鼠标滑动，标记父元素
+			})
+		}
+    	
+    	
+        //下拉选择样式
+        $('.select2').select2();
+        //弹出层
+        function pop_show(obj){
+            layer_show($(obj).attr('title'),$(obj).attr('url'),$(obj).attr('w'),$(obj).attr('h'));
+        }
+        //自定义时间
+        var time_data = {$info['time_ids']};
+        for(var i in time_data){
+            laydate.render({
+                elem: '#time_'+time_data[i],
+                theme: '#3c8dbc',
+                trigger: 'click',
+                range: true,
+                done:function(){
+                    hanle_data();
+                }
+            });
+        }
+        //全选
+        $("body").on('click','.check_all',function(){
+            if($(this).is(":checked")){
+                $(".ids").prop('checked',true);
+                $(".dataTables_wrapper tbody tr,.buttonFixed>div").addClass("activeTd")
+            }else{
+                $(".ids").prop('checked',false);
+                $(".dataTables_wrapper tbody tr,.buttonFixed>div").removeClass("activeTd")
+            }
+            $(".buttonFixed>div").eq(0).removeClass("activeTd")
+        });
+        //单选
+        $("body").on("click",".buttonFixed>div .ids",function(e){
+            if($(this).is(":checked")){
+            	$(".dataTable tbody tr").eq($(this).parents(".clearfix").index()-1).addClass("activeTd")
+				$(".buttonFixed>div").eq($(this).parents(".clearfix").index()).addClass("activeTd");
+            }else{
+            	$(".check_all").prop('checked',false);
+            	$(".dataTable tbody tr").eq($(this).parents(".clearfix").index()-1).removeClass("activeTd")
+				$(".buttonFixed>div").eq($(this).parents(".clearfix").index()).removeClass("activeTd");
+            }
+            e.stopPropagation();
+        });
+        var timers=null;
+        $("body").on("click",".buttonFixed>div div:nth-child(2)",function(e){
+        	var that = $(this);
+        	clearTimeout(timers);
+			timers = setTimeout(function(){
+	        	if(that.hasClass(".ids")){
+	        		var index = that.parents(".clearfix").index();
+	        	}else{
+	        		var index = that.parents().index();
+	        	}
+	            if(!$(".buttonFixed>div").eq(index).find(".ids")[0].checked){
+	                $(".dataTable tbody tr").eq(index-1).addClass("activeTd")
+					$(".buttonFixed>div").eq(index).find("input[type='checkbox']").prop("checked", true);
+					$(".buttonFixed>div").eq(index).addClass("activeTd");
+	            }else{
+	            	$(".check_all").prop('checked',false);
+	            	$(".dataTable tbody tr").eq(index-1).removeClass("activeTd")
+					$(".buttonFixed>div").eq(index).find("input[type='checkbox']").prop("checked", false);
+					$(".buttonFixed>div").eq(index).removeClass("activeTd");
+	            }
+            },200)
+        });
+   		$("body").on("dblclick",".buttonFixed>div div:nth-child(2)",function(){
+			clearTimeout(timers);
+			open($(".dataTables_wrapper tbody tr").eq($(this).parents(".clearfix").index()).attr("url"),"_blank");
+		})
+        
+		//单机选中任一一行
+		var timer=null;
+		$(".dataTables_wrapper tbody").on("click","tr",function(){
+			var that = $(this);
+			clearTimeout(timer);
+			timer = setTimeout(function(){
+			    if($(".buttonFixed>div").eq(that.index()+1).find(".ids")[0].checked){
+					that.removeClass("activeTd")
+					//that.find("input[type='checkbox']").prop("checked", false);
+					$(".buttonFixed>div").eq(that.index()+1).find(".ids").prop("checked", false);
+					$(".buttonFixed>div").eq(that.index()+1).removeClass("activeTd");
+					$(".check_all").prop('checked',false);
+				}else{
+					that.addClass("activeTd")
+					//that.find("input[type='checkbox']").prop("checked", true);
+					$(".buttonFixed>div").eq(that.index()+1).find(".ids").prop("checked", true);
+					$(".buttonFixed>div").eq(that.index()+1).addClass("activeTd");
+				} 
+			},200)
+		})
+		$(".dataTables_wrapper tbody").on("click","a",function(e){
+			e.stopPropagation();
+		})
+		//双击打开详情页
+		$(".dataTables_wrapper tbody").on("dblclick","tr",function(){
+			clearTimeout(timer);
+			open($(this).attr("url"),"_blank");
+		})
+        //自动加载数据
+        $(function(){
+            $.ajax({
+                type:"get",
+                url:"{$url}",
+                success:function(html){
+                    if(html.lists){
+                        $("tbody").html(html.lists);
+                        $(".page").html(html.page);
+                        $(".buttonFixed").remove();
+                        $(".box").append('<div class="buttonFixed"></div>');
+                        fixed();
+                        $(".scroll_xmove").show();
+                    }else{
+                        $("tbody").html('<tr><td colspan="50" align="center">暂无数据</td></tr>')
+                        $(".page,.buttonFixed").remove();
+                        $(".scroll_xmove").hide();
+                    }
+                }
+            });
+        });
+        //处理数据
+        function hanle_data(order,num){
+            if(!order){
+                if($(".sorting_desc").length != 0 ){
+                    order = $(".sorting_desc").attr('name') + ' desc';
+                }else if($(".sorting_asc").length != 0 ){
+                    order = $(".sorting_asc").attr('name') + ' asc';
+                }
+            }
+            var data = '';
+            var val="";
+            var name="";
+            if(!num){
+                num = 1;
+            }
+            var search = $(".search_mark").val();
+            var search_title = $(".search_title").val();
+            if(search && search_title){
+                data += 'search=' + search + '&search_title=' + search_title;
+            }
+            if(order){
+                if(data){
+                    data += '&order=' + order;
+                }else{
+                    data += 'order=' + order;
+                }
+            }
+            $(".option_on").each(function(){
+                val = $(this).attr('value');
+                if(val){
+                    name = $(this).parent(".ones_option").attr("name");
+                    if(data){
+                        data += '&' + name + '=' + val;
+                    }else{
+                        data += name + '=' + val;
+                    }
+                    //时间段
+                    if($(this).attr('other_type') == 'time' && $(this).next("input").val()){
+                        data += '&time_' + name + '=' + $(this).next("input").val();
+                    }
+                }
+            });
+            if(data){
+                data += '&p=' + num;
+            }else{
+                data += 'p=' + num;
+            }
+            $.ajax({
+                type:"post",
+                url:"{$url}",
+                data:data,
+                success:function(html){
+                    if(html.lists){
+                        $("tbody").html(html.lists);
+                        $(".page").html(html.page);
+                        $(".buttonFixed").remove();
+                        $(".box").append('<div class="buttonFixed"></div>');
+                        fixed();
+                        $(".scroll_xmove").show();
+                    }else{
+                        $("tbody").html('<tr><td colspan="50" align="center">暂无数据</td></tr>');
+                        $(".page,.buttonFixed").remove();
+                        $(".scroll_xmove").hide();
+                    }
+                }
+            });
+        }
+        //筛选
+        $("#search").click(function(){
+            hanle_data();
+        });
+        document.onkeydown = function (e) {
+            if (!e) e = window.event;
+            if ((e.keyCode || e.which) == 13) {
+                hanle_data();
+            }
+        }
+        function test(){
+            alert('abc');
+        }
+        //筛选
+        $(".one_option").click(function(){
+            $(this).addClass("option_on");
+            $(this).siblings("a").removeClass("option_on");
+            if($(this).attr("other_type") == "time"){
+                //时间段
+                $(this).next("input").show();
+                return false;
+            }else{
+                $(this).parent(".ones_option").find("input").hide();
+            }
+            hanle_data();
+        });
+        //分页
+        function ajax_page(obj){
+            var num = $(obj).attr("num");
+            hanle_data('',num);
+        }
+        //排序
+        function sort(obj){
+            if($(obj).hasClass("sorting")){
+                $(obj).siblings("th").removeClass("sorting_desc");
+                $(obj).siblings("th").removeClass("sorting_asc");
+                $(obj).siblings("th").addClass("sorting");
+                $(obj).removeClass("sorting");
+                $(obj).addClass("sorting_asc");
+                var order = $(obj).attr('name') + ' asc';
+                hanle_data(order);
+            }else if($(obj).hasClass("sorting_desc")){
+                $(obj).removeClass("sorting_desc");
+                $(obj).addClass("sorting_asc");
+                var order = $(obj).attr('name') + ' asc';
+                hanle_data(order);
+            }else if($(obj).hasClass("sorting_asc")){
+                $(obj).removeClass("sorting_asc");
+                $(obj).addClass("sorting_desc");
+                var order = $(obj).attr('name') + ' desc';
+                hanle_data(order);
+            }
+        }
+        //excel导出
+        $("#excel").click(function(){
+            var data = '';
+            var val="";
+            var name="";
+            var order = "";
+            var num = 1;
+            var search = $(".search_mark").val();
+            var search_title = $(".search_title").val();
+            if(search && search_title){
+                data += 'search=' + search + '&search_title=' + search_title;
+            }
+            if(order){
+                if(data){
+                    data += '&order=' + order;
+                }else{
+                    data += 'order=' + order;
+                }
+            }
+            $(".option_on").each(function(){
+                val = $(this).attr('value');
+                if(val){
+                    name = $(this).parent(".ones_option").attr("name");
+                    if(data){
+                        data += '&' + name + '=' + val;
+                    }else{
+                        data += name + '=' + val;
+                    }
+                    //时间段
+                    if($(this).attr('other_type') == 'time' && $(this).next("input").val()){
+                        data += '&time_' + name + '=' + $(this).next("input").val();
+                    }
+                }
+            });
+            if(data){
+                data += '&p=' + num;
+            }else{
+                data += 'p=' + num;
+            }
+            var url = "{:U('Excel/waters_excel')}";
+            url += '?' + data;
+            window.location.href = url;
+        });
+        
+        disabledMouseWheel()
+        function disabledMouseWheel() {  
+        	var dom = document.getElementById("scrollfather2");
+		  if (dom.addEventListener) {  
+		    dom.addEventListener('DOMMouseScroll', scrollFunc, false);  
+		  }//W3C  
+		  window.onmousewheel = dom.onmousewheel = scrollFunc;//IE/Opera/Chrome  
+		}
+		
+		//开启滚轮
+		function scrollFunc(evt) {  
+		  evt = evt || window.event;  
+		    if(evt.preventDefault) {  
+		    	// Firefox  
+		      //evt.preventDefault();  
+		      evt.stopPropagation();  
+		    } else {  
+		      // IE  
+		      evt.cancelBubble=true;  
+		      evt.returnValue = false;  
+		  }  
+		  //return false;  
+		}  
+        
+        
+        
+        
+        function fixed(t){
+        	//宽度已适应
+        	$(".buttonFixed").html("");
+        	var td = $(".dataTable thead tr>*");
+        	var width = td.eq(0).outerWidth() + td.eq(1).outerWidth()+1;
+        	//if(t){width = width+2}
+        	var height = td.eq(0).outerHeight()*$(".dataTable tr").length;
+        	var top = td.eq(td.length - 1).offset().top - 109;
+        	$(".buttonFixed").css({"width":width,"height":height,"top":top,"left":"10px","display":"block"}).html("");
+        	//alert(parseFloat(td.eq(6).outerHeight()))
+        	
+        	for(var i = 0;i<$(".dataTable tr").length;i++){
+        		var html = $(".dataTable tr").eq(i).find(">*").eq(0).html();
+        		var html2 = $(".dataTable tr").eq(i).find(">*").eq(1).html();
+        		var is = $(".dataTable tr").eq(i).hasClass("activeTd");
+        		$(".buttonFixed").append('<div class="clearfix '+ (is==true?'activeTd':'') +'"><div style="width:'+ (td.eq(0).outerWidth()) +'px">'+html+'</div><div style="width:'+(td.eq(1).outerWidth())+'px">'+html2+'</div></div>');
+        	
+        		if(is&&$(".buttonFixed>div").eq(i).find(".ids").length>0){
+        			console.log($(".buttonFixed>div").eq(i).find(".ids"))
+    				$(".buttonFixed>div").eq(i).find(".ids").prop('checked',true);
+	    		}
+        	}
+        	sc()
+        	
+        	if(getOs()=="Firefox"){
+        		$(".buttonFixed>div:nth-child(1)").css("margin-top","-1px");
+        	}
+        	$(".scrollson").css("margin-left", "0") 
+        	$(".scroll_x").css("left", "0")
+        }
+        $(window).resize(function(){
+        	fixed();
+        })
+        
+        function openMore(t){
+        	if($(t).html()=="展开更多"){
+        		$(t).html("收起");
+        		$(".ones_option").show();
+        		fixed();
+        	}else{
+        		$(t).html("展开更多");
+        		for(var i = 0;i<$(".ones_option").length;i++){
+        			if(i>4){
+        				$(".ones_option").eq(i).hide();
+        			}
+        		}
+        		fixed(1);
+			}
+        }
+        
+        
+        function getOs()  
+		{  
+		    var OsObject = "";  
+		   if(navigator.userAgent.indexOf("MSIE")>0) {  
+		        return "MSIE";  
+		   }  
+		   if(isFirefox=navigator.userAgent.indexOf("Firefox")>0){  
+		        return "Firefox";  
+		   }  
+		   if(isSafari=navigator.userAgent.indexOf("Safari")>0) {  
+		        return "Safari";  
+		   }   
+		   if(isCamino=navigator.userAgent.indexOf("Camino")>0){  
+		        return "Camino";  
+		   }  
+		   if(isMozilla=navigator.userAgent.indexOf("Gecko/")>0){  
+		        return "Gecko";  
+		   }  
+		     
+		}  
+    </script>
+</block>

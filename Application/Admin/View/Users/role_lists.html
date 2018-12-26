@@ -1,0 +1,88 @@
+<extend name="Base::page"/>
+<block name="style">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="__CSS__/dataTables.bootstrap.min.css">
+</block>
+<block name="body">
+    <div class="wrapper">
+        <!--菜单-->
+        <include file="Base/menu" />
+
+        <!--内容页面-->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    角色管理
+                    <!--<small>Control panel</small>-->
+                </h1>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- /.box -->
+
+                        <div class="box">
+                            <div class="box-header">
+                                <a class="btn btn-primary popshow" url="{:U('edit_role')}" title="新增角色" w="600" h="400">新增角色</a>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-bordered table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th>角色名称</th>
+                                                    <th>角色描述</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <volist name="lists" id="vo">
+                                                <tr>
+                                                    <td>{$vo['name']}</td>
+                                                    <td>{$vo['intro']}</td>
+                                                    <td>
+                                                        <eq name="vo['type']" value="1">
+                                                            <!--管理员-->
+                                                            <a class="btn btn-info btn-xs" disabled >编辑</a>
+                                                            <a class="btn btn-info btn-xs" disabled >删除</a>
+                                                            <a class="btn btn-info btn-xs" disabled >权限管理</a>
+                                                        <else/>
+                                                            <!--用户-->
+                                                            <a class="btn btn-info btn-xs popshow" url="{:U('edit_role',array('id'=>$vo['id']))}" title="编辑角色" w="600" h="400" >编辑</a>
+                                                            <a class="btn btn-info btn-xs ajax-get" msg="确认要删除该条数据吗？" url="{:U('del_role',array('id'=>$vo['id']))}">删除</a>
+                                                            <a class="btn btn-info btn-xs popshow" url="{:U('edit_rule',array('role_id'=>$vo['id']))}" title="权限设置" w="600" h="400">权限管理</a>
+                                                        </eq>
+                                                    </td>
+                                                </tr>
+                                                </volist>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!--分页-->
+                                    {$_page}
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+
+        <!--尾部-->
+        <include file="Base/footer" />
+    </div>
+</block>
+
+<block name="script">
+</block>

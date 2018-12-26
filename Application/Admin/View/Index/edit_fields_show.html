@@ -1,0 +1,82 @@
+<extend name="Base::page"/>
+<block name="style">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="__CSS__/dataTables.bootstrap.min.css">
+    <!-- jquery-ui -->
+    <link rel="stylesheet" href="__CSS__/jquery-ui.min.css">
+    <style>
+        .move{cursor: move;}
+        .mid{text-align: center;}
+    </style>
+</block>
+<block name="body">
+    <div class="wrapper" style="padding-bottom:50px;">
+
+        <!--内容页面-->
+        <div class="content-wrapper" style="margin-left: 0px;">
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- /.box -->
+
+                        <div class="box">
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <form method="post" action="{:U('edit_fields_show')}" class="form-tagging">
+                                                <table class="table table-bordered table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="mid">是否显示</th>
+                                                        <th width="60%">字段名称</th>
+                                                        <th class="mid">拖动排序</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody id="sortable">
+                                                    <volist name="lists" id="vo">
+                                                        <tr>
+                                                            <td class="mid">
+                                                                <input type="checkbox" name="choices[]" value="{$vo['fields_text']}" <eq name="vo['status']" value="1">checked</eq> />
+                                                                <input type="hidden" name="sorts[]" value="{$vo['fields_text']}" />
+                                                            </td>
+                                                            <td>{$vo['title']}</td>
+                                                            <td class="mid"><i class="fa fa-fw fa-bars move"></i></td>
+                                                        </tr>
+                                                    </volist>
+                                                    </tbody>
+                                                </table>
+                                                <div class="fixedBotton">
+                                                	<button type="submit" class="btn btn-primary ajax-post" target_form="form-tagging">保存</button>
+                                            	</div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <!-- jquery-ui -->
+    <script src="__JS__/jquery-ui.min.js"></script>
+    <script>
+        $(function() {
+            $( "#sortable" ).sortable({ handle: '.move' });
+            $( "#sortable" ).disableSelection();
+        });
+    </script>
+</block>

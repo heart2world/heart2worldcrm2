@@ -1,0 +1,18 @@
+[ 2018-11-10T11:21:44+08:00 ] 127.0.0.1 /Uploads/Picture/2018-11-10/5be644e710ed7.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000391s ]
+ERR: 无法加载模块:Uploads
+
+[ 2018-11-10T14:01:32+08:00 ] 127.0.0.1 /Public/font/iconfont.woff?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000393s ]
+ERR: 无法加载模块:Public
+
+[ 2018-11-10T14:01:32+08:00 ] 127.0.0.1 /Public/font/iconfont.ttf?v=240
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000381s ]
+ERR: 无法加载模块:Public
+

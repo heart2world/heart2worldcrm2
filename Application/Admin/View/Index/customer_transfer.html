@@ -1,0 +1,41 @@
+<extend name="Base::page"/>
+<block name="style">
+</block>
+<block name="body">
+    <div class="wrapper" style="padding-bottom:50px;"> 
+        <div class="content-wrapper" style="margin-left: 0px;">
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box box-primary">
+                            <form method="post" action="{:U('customer_transfer')}" class="form-tagging">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label>新负责人</label>
+                                        <select class="form-control select2" name="person_id" style="width:100%;">
+                                            <volist name="configs['person']" id="vo">
+                                                <option value="{$vo['id']}">{$vo['title']}</option>
+                                            </volist>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="box-footer fixedBotton" >
+                                    <input type="hidden" name="customer_id" value="{$Think.get.customer_id}" />
+                                    <button type="submit" class="btn btn-primary ajax-post" target_form="form-tagging">确定</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <!-- Select2 -->
+    <script src="__JS__/select2.full.min.js"></script>
+    <script>
+        $('.select2').select2();
+    </script>
+</block>

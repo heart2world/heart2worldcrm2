@@ -1,0 +1,451 @@
+[ 2018-12-05T14:50:08+08:00 ] 127.0.0.1 /admin/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000608s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001080s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001115s ]
+SQL: SHOW COLUMNS FROM `sys_users` [ RunTime:0.0060s ]
+SQL: SELECT `id`,`status` FROM `sys_users` WHERE `id` = null LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_role_rules` [ RunTime:0.0063s ]
+SQL: SELECT `rules_id` FROM `sys_role_rules` WHERE `role_id` = null  [ RunTime:0.0001s ]
+NOTIC: [8] Undefined variable: rules_data D:\WWW\system\Application\Admin\Controller\BaseController.class.php 第 114 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\WWW\system\Application\Admin\Controller\BaseController.class.php 第 114 行.
+NOTIC: [8] Undefined variable: rules_data D:\WWW\system\Application\Admin\Controller\BaseController.class.php 第 114 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\WWW\system\Application\Admin\Controller\BaseController.class.php 第 114 行.
+NOTIC: [8] Undefined variable: rules_data D:\WWW\system\Application\Admin\Controller\BaseController.class.php 第 114 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\WWW\system\Application\Admin\Controller\BaseController.class.php 第 114 行.
+NOTIC: [8] Undefined variable: rules_data D:\WWW\system\Application\Admin\Controller\BaseController.class.php 第 114 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\WWW\system\Application\Admin\Controller\BaseController.class.php 第 114 行.
+NOTIC: [8] Undefined variable: rules_data D:\WWW\system\Application\Admin\Controller\BaseController.class.php 第 114 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\WWW\system\Application\Admin\Controller\BaseController.class.php 第 114 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000071s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000106s ]
+NOTIC: [8] Undefined variable: vo D:\WWW\system\Application\Runtime\Cache\Admin\da4cd6c0f72b4897fc3959e8a3e7598e.php 第 72 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013804s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013835s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000960s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000984s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001191s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001219s ]
+
+[ 2018-12-05T14:50:08+08:00 ] 127.0.0.1 /Admin/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000428s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001033s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001098s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000041s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000071s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006129s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006163s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000713s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000736s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000834s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000860s ]
+
+[ 2018-12-05T14:50:08+08:00 ] 127.0.0.1 /Admin/Public/verify_code.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000438s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000870s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000910s ]
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 119 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001104s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001169s ]
+
+[ 2018-12-05T14:50:25+08:00 ] 127.0.0.1 /Admin/Public/verify_code.html?t=0.24342970830688904
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000583s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000840s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000874s ]
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 119 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000877s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000908s ]
+
+[ 2018-12-05T14:50:28+08:00 ] 127.0.0.1 /Admin/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000440s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000835s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000865s ]
+SQL: SHOW COLUMNS FROM `sys_users` [ RunTime:0.0043s ]
+SQL: SHOW COLUMNS FROM `sys_users` [ RunTime:0.0039s ]
+SQL: SELECT `id`,`password`,`name`,`type`,`role_id`,`status` FROM `sys_users` WHERE `login_name` = 'admin' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_role` [ RunTime:0.0052s ]
+SQL: SELECT `name` FROM `sys_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+
+[ 2018-12-05T14:50:29+08:00 ] 127.0.0.1 /Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000426s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000657s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000695s ]
+SQL: SHOW COLUMNS FROM `sys_users` [ RunTime:0.0044s ]
+SQL: SELECT `id`,`status` FROM `sys_users` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `sys_rules` [ RunTime:0.0057s ]
+SQL: SELECT `mark` FROM `sys_rules`  [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000070s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000098s ]
+NOTIC: [8] Undefined variable: vo D:\WWW\system\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 72 行.
+NOTIC: [8] Undefined index: is_show D:\WWW\system\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 122 行.
+NOTIC: [8] Undefined index: is_show D:\WWW\system\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 122 行.
+NOTIC: [8] Undefined index: is_show D:\WWW\system\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 122 行.
+NOTIC: [8] Undefined index: is_show D:\WWW\system\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 122 行.
+NOTIC: [8] Undefined index: is_show D:\WWW\system\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 122 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008580s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008616s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000490s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000513s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000634s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000662s ]
+
+[ 2018-12-05T14:50:59+08:00 ] 127.0.0.1 /Admin/Index/lists.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000470s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000890s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000928s ]
+SQL: SHOW COLUMNS FROM `sys_users` [ RunTime:0.0044s ]
+SQL: SELECT `id`,`status` FROM `sys_users` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_rules` [ RunTime:0.0038s ]
+SQL: SELECT `mark` FROM `sys_rules`  [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `sys_customer` [ RunTime:0.0054s ]
+SQL: SHOW COLUMNS FROM `sys_users_fields` [ RunTime:0.0050s ]
+SQL: SELECT `fields_text`,`sort` FROM `sys_users_fields` WHERE `users_id` = 1 AND `status` = 1 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_fields` [ RunTime:0.0054s ]
+SQL: SELECT `id`,`title` FROM `sys_fields` WHERE `status` = 1 AND `is_open` = 1  [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `sys_screen_fields` [ RunTime:0.0046s ]
+SQL: SELECT `fields_text`,`sort` FROM `sys_screen_fields` WHERE `users_id` = 1 AND `status` = 1 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`title`,`type`,`extra` FROM `sys_fields` WHERE `status` = 1 AND `is_open` = 1  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000149s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000178s ]
+NOTIC: [8] Undefined variable: vo D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 82 行.
+NOTIC: [8] Undefined index: is_show D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 132 行.
+NOTIC: [8] Undefined index: is_show D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 132 行.
+NOTIC: [8] Undefined index: is_show D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 132 行.
+NOTIC: [8] Undefined index: is_show D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 132 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 162 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 163 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 162 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 163 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 162 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 163 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 162 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 163 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 162 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 163 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 162 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 163 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 162 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 163 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 162 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 163 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 162 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 163 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 162 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 163 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 162 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 163 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 162 行.
+NOTIC: [8] Undefined index: other_type D:\WWW\system\Application\Runtime\Cache\Admin\42922c5e2bb78dc7cec9eb4e7516143b.php 第 163 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013933s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013967s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000840s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000866s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000984s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001014s ]
+
+[ 2018-12-05T14:51:00+08:00 ] 127.0.0.1 /Admin/Index/ajaxLists.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000429s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000833s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000865s ]
+SQL: SHOW COLUMNS FROM `sys_users` [ RunTime:0.0041s ]
+SQL: SELECT `id`,`status` FROM `sys_users` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `sys_rules` [ RunTime:0.0038s ]
+SQL: SELECT `mark` FROM `sys_rules`  [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `sys_customer` [ RunTime:0.0045s ]
+SQL: SHOW COLUMNS FROM `sys_customer` [ RunTime:0.0038s ]
+SQL: SHOW COLUMNS FROM `sys_users_fields` [ RunTime:0.0039s ]
+SQL: SELECT `fields_text`,`sort` FROM `sys_users_fields` WHERE `users_id` = 1 AND `status` = 1 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_fields` [ RunTime:0.0048s ]
+SQL: SELECT `id`,`type` FROM `sys_fields` WHERE `status` = 1 AND `is_open` = 1  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: search D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 44 行.
+SQL:  select count(*) as count  from ( SELECT c.id FROM sys_customer c left join sys_customer_fields as cf ON cf.customer_id = c.id left join sys_customer_fields as cfs ON cfs.customer_id = c.id left join sys_follow as f ON f.customer_id = c.id  GROUP BY c.id  ) as temp [ RunTime:0.0307s ]
+SQL: SELECT c.id,c.name,c.mobile,c.type,c.follow_status,c.next_follow_time,c.users_id,c.person_id,c.create_time,c.update_time,max(f.create_time) as follow_time FROM sys_customer c left join sys_customer_fields as cf ON cf.customer_id = c.id left join sys_customer_fields as cfs ON cfs.customer_id = c.id left join sys_follow as f ON f.customer_id = c.id  GROUP BY c.id ORDER BY c.create_time desc LIMIT 0,10   [ RunTime:0.0548s ]
+SQL: SHOW COLUMNS FROM `sys_customer_fields` [ RunTime:0.0041s ]
+SQL: SELECT `customer_id`,`fields_id`,`content` FROM `sys_customer_fields` WHERE `customer_id` IN ('225','224','223','222','221','220','219','218','217','216')  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`name` FROM `sys_users`  [ RunTime:0.0001s ]
+SQL: SELECT `id`,`type` FROM `sys_fields` WHERE `status` = 1 AND `is_open` = 1  [ RunTime:0.0001s ]
+NOTIC: [8] Undefined index: no_follow_day D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 199 行.
+NOTIC: [8] Undefined offset: 225 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 225 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 225 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined index: no_follow_day D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 199 行.
+NOTIC: [8] Undefined offset: 224 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 224 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 224 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined index: no_follow_day D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 199 行.
+NOTIC: [8] Undefined offset: 223 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 223 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 223 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined index: no_follow_day D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 199 行.
+NOTIC: [8] Undefined offset: 222 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 222 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 222 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined index: no_follow_day D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 199 行.
+NOTIC: [8] Undefined offset: 221 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 221 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 221 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined index: no_follow_day D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 199 行.
+NOTIC: [8] Undefined offset: 220 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 220 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 220 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined index: no_follow_day D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 199 行.
+NOTIC: [8] Undefined offset: 219 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 219 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 219 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined index: no_follow_day D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 199 行.
+NOTIC: [8] Undefined offset: 218 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 218 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 218 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined index: no_follow_day D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 199 行.
+NOTIC: [8] Undefined offset: 217 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 217 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 217 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined index: no_follow_day D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 199 行.
+NOTIC: [8] Undefined offset: 216 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 216 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+NOTIC: [8] Undefined offset: 216 D:\WWW\system\Application\Admin\Model\CustomerModel.class.php 第 190 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000034s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000075s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007953s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007984s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000737s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000760s ]
+
+[ 2018-12-05T14:51:10+08:00 ] 127.0.0.1 /Admin/Public/logout.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000496s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015465s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015511s ]
+SQL: SHOW COLUMNS FROM `sys_users` [ RunTime:0.0047s ]
+SQL: SELECT `id`,`status` FROM `sys_users` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `sys_rules` [ RunTime:0.0042s ]
+SQL: SELECT `mark` FROM `sys_rules`  [ RunTime:0.0001s ]
+
+[ 2018-12-05T14:51:10+08:00 ] 127.0.0.1 /Admin/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000374s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000535s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000039s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000068s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004097s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004126s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000365s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000389s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000487s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000513s ]
+
+[ 2018-12-05T14:51:10+08:00 ] 127.0.0.1 /Admin/Public/verify_code.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000383s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000503s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000538s ]
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 119 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+NOTIC: [8] A non well formed numeric value encountered D:\WWW\system\ThinkPHP\Library\Think\Verify.class.php 第 256 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000602s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000674s ]
+

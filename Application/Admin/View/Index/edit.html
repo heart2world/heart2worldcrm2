@@ -1,0 +1,271 @@
+<extend name="Base::page"/>
+<block name="style">
+    <link rel="stylesheet" href="__CSS__/layui.css">
+    <style>
+        .upfile{position: relative;overflow: hidden;}
+        .upfile>input{position: absolute;top:0;left:0;right: 0;bottom:0;opacity: 0;}
+        .picBox{overflow: hidden;}
+        .picBox>div{float: left;margin: 10px;}
+        .picBox>div>div{position: relative;width: 100px;height: 100px;border: 1px solid #eee; -webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;text-align: center;vertical-align: middle;}
+        .picBox>div>p{text-align: center;}
+        .picBox>div>div>i{position: absolute;right: -5px;top:-5px;display: inline-block;width: 15px;height:15px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;background: #ccc;color:#fff;text-align: center;}
+        .picBox>div.file .filepic{font-size: 50px;line-height: 100px;color: #3c8dbc;}
+    </style>
+</block>
+<block name="body" >
+    <div class="wrapper" style="padding-bottom:70px;background:#ecf0f5;">
+        <div class="content-wrapper" style="margin-left: 0px;">
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box box-primary">
+                            <form method="post" action="{:U('Index/edit')}" class="form-tagging">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label><font color="#f00">*</font>客户名称</label>
+                                        <input type="text" name="name" class="form-control" value="{$info['name']}" maxlength="20" placeholder="请输入客户名称">
+                                    </div>
+                                    <div class="form-group">
+                                        <label><font color="#f00">*</font>手机号</label>
+                                        <input type="text" name="mobile" class="form-control" value="{$info['mobile']}" maxlength="11" placeholder="请输入手机号" onblur="checkInter(this);">
+                                    </div>
+                                    <!--自定义字段-->
+                                    <volist name="configs['fields_data']" id="vo">
+                                        <switch name="vo['type']">
+                                            <case value="1">
+                                                <!--单行文本-->
+                                                <div class="form-group">
+                                                    <label><eq name="vo['is_must']" value="1"><font color="#f00">*</font></eq>{$vo['title']}</label>
+                                                    <input type="text" name="fields_data[{$vo['id']}]" class="form-control" value="{$info[$vo['id']]}" maxlength="20" placeholder="{$vo['tips']|default=''}">
+                                                </div>
+                                            </case>
+                                            <case value="2">
+                                                <!--多行文本-->
+                                                <div class="form-group">
+                                                    <label><eq name="vo['is_must']" value="1"><font color="#f00">*</font></eq>{$vo['title']}</label>
+                                                    <textarea class="form-control" name="fields_data[{$vo['id']}]" rows="3" maxlength="200" placeholder="{$vo['tips']|default=''}">{$info[$vo['id']]}</textarea>
+                                                </div>
+                                            </case>
+                                            <case value="3">
+                                                <!--单选下拉列表-->
+                                                <div class="form-group">
+                                                    <label><eq name="vo['is_must']" value="1"><font color="#f00">*</font></eq>{$vo['title']}</label>
+                                                    <select class="form-control select2" name="fields_data[{$vo['id']}]">
+                                                        <volist name="vo['extra']" id="item">
+                                                            <option value="{$item['title']}" <eq name="item['title']" value="$info[$vo['id']]">selected</eq> >{$item['title']}</option>
+                                                        </volist>
+                                                    </select>
+                                                </div>
+                                            </case>
+                                            <case value="4">
+                                                <!--多选下拉列表-->
+                                                <div class="form-group">
+                                                    <label><eq name="vo['is_must']" value="1"><font color="#f00">*</font></eq>{$vo['title']}</label>
+                                                    <div class="checkbox">
+                                                        <volist name="vo['extra']" id="item">
+                                                            <label style="margin-right: 50px;">
+                                                                <input type="checkbox" name="fields_data[{$vo['id']}][]" value="{$item['title']}" <in name="item['title']" value="$info[$vo['id']]" >checked</in> >{$item['title']}
+                                                            </label>
+                                                        </volist>
+                                                    </div>
+                                                </div>
+                                            </case>
+                                            <case value="5">
+                                                <!--数字-->
+                                                <div class="form-group">
+                                                    <label><eq name="vo['is_must']" value="1"><font color="#f00">*</font></eq>{$vo['title']}</label>
+                                                    <input type="text" name="fields_data[{$vo['id']}]" class="form-control" value="{$info[$vo['id']]}" maxlength="20" placeholder="{$vo['tips']|default=''}" onblur="checkNum(this);">
+                                                </div>
+                                            </case>
+                                            <case value="6">
+                                                <!--图片-->
+                                                <div class="form-group">
+                                                    <label><eq name="vo['is_must']" value="1"><font color="#f00">*</font></eq>{$vo['title']}</label>
+                                                    <div class="upfile btn btn-primary upload_pic_{$vo['id']}">请上传</div>
+                                                    <div class="picBox picBox_{$vo['id']}">
+                                                        <volist name="info[$vo['id']]" id="item">
+                                                            <div class="pic">
+                                                                <div><img style="width: 100%;height: 100%;" src="{:getFileUrl($item)}" /><i class="fa fa-times" onclick="pic_del(this);"></i></div>
+                                                                <input type="hidden" name="fields_data[{$vo['id']}][]" value="{$item}" />
+                                                            </div>
+                                                        </volist>
+                                                    </div>
+                                                </div>
+                                            </case>
+                                            <case value="7">
+                                                <!--时间-->
+                                                <div class="form-group">
+                                                    <label><eq name="vo['is_must']" value="1"><font color="#f00">*</font></eq>{$vo['title']}</label>
+                                                    <div class="input-group date">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text" class="form-control pull-right" name="fields_data[{$vo['id']}]" value="{$info[$vo['id']]}" placeholder="{$vo['tips']|default=''}" readonly style="cursor: pointer;" id="time_{$vo['id']}">
+                                                    </div>
+                                                </div>
+                                            </case>
+                                        </switch>
+                                    </volist>
+
+
+                                    <div class="form-group">
+                                        <label><font color="#f00">*</font>客户类型</label>
+                                        <select class="form-control select2" name="type">
+                                            <volist name="configs['customer_type']" id="vo">
+                                                <option value="{$vo['id']}" <eq name="vo['id']" value="$info['type']">selected</eq> >{$vo['title']}</option>
+                                            </volist>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label><font color="#f00">*</font>跟进状态</label>
+                                        <select class="form-control select2" name="follow_status">
+                                            <volist name="configs['follow_status']" id="vo">
+                                                <option value="{$vo['id']}" <eq name="vo['id']" value="$info['follow_status']">selected</eq> >{$vo['title']}</option>
+                                            </volist>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label><font color="#f00">*</font>下次跟进时间</label>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" class="form-control pull-right" name="next_follow_time" value="{$info['next_follow_time']}" placeholder="请输入下次跟进时间" readonly style="cursor: pointer;" id="next_follow_time">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label><font color="#f00">*</font>负责人</label>
+                                        <select class="form-control select2" name="person_id">
+                                            <volist name="configs['person']" id="vo">
+                                                <option value="{$vo['id']}" <eq name="vo['id']" value="$info['person_id']">selected</eq> >{$vo['title']}</option>
+                                            </volist>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>附件上传</label>
+                                        <div class="upfile btn btn-primary upload">请上传</div>
+                                        <div class="picBox picBox_file">
+                                            <!--<div class="pic">-->
+                                                <!--<div><img /><i class="fa fa-times"></i></div>-->
+                                                <!--<p>名称1111</p>-->
+                                            <!--</div>-->
+                                            <volist name="info['file_data']" id="vo">
+                                            <div class="file">
+                                                <div><span class="fa fa-file-text-o filepic"></span><i class="fa fa-times" onclick="file_del(this);"></i></div>
+                                                <input type="hidden" name="file_data[]" value="{$vo['sha1']}" />
+                                                <p>{$vo['name']}</p>
+                                            </div>
+                                            </volist>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label><font color="#f00">*</font>备注信息</label>
+                                        <textarea class="form-control" name="remark" rows="3" maxlength="200" placeholder="请输入备注信息">{$info['remark']}</textarea>
+                                    </div>
+                                </div>
+                                <div class="box-footer fixedBotton">
+                                    <input type="hidden" name="id" value="{$info['id']}" />
+                                    <button type="submit" class="btn btn-primary ajax-post" target_form="form-tagging">保存</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <!-- Select2 -->
+    <script src="__JS__/select2.full.min.js"></script>
+    <script src="__PUBLIC__/laydate/laydate.js"></script>
+    <script src="__JS__/layui.js"></script>
+    <volist name="configs['fields_data']" id="vo">
+        <switch name="vo['type']">
+            <case value="6">
+                <script>
+                    layui.use('upload', function(){
+                        var $ = layui.jquery ,upload = layui.upload;
+                        //附件上传
+                        upload.render({
+                            elem: ".upload_pic_{$vo['id']}",
+                            multiple: true,
+                            url: "{:U('Files/Image/upload')}",
+                            done: function(res){
+                                if(res.code == 200){
+                                    var html = '<div class="pic">';
+                                    html += '<div><img style="width: 100%;height: 100%;" src="' + res.path + '" /><i class=" fa fa-times" onclick="pic_del(this);"></i></div>';
+                                    html += '<p>'+res.title+'</p>';
+                                    html += '<input type="hidden" name="fields_data['+{$vo['id']}+'][]" value="'+res.data+'" />';
+                                    html += '</div>';
+                                    $(".picBox_{$vo['id']}").append(html);
+                                }else{
+                                    return layer.msg('上传失败');
+                                }
+                            },
+                            error: function(){
+                                return layer.msg('上传失败');
+                            }
+                        });
+                    });
+                </script>
+            </case>
+        </switch>
+    </volist>
+    <script>
+        layui.use('upload', function(){
+            var $ = layui.jquery ,upload = layui.upload;
+            //附件上传
+            upload.render({
+                elem: '.upload',
+                multiple: true,
+                accept: 'file',
+                url: "{:U('Files/File/upload')}",
+                done: function(res){
+                    if(res.code == 200){
+                        var html = '<div class="file">';
+                        html += '<div><span class="fa fa-file-text-o filepic"></span><i class="fa fa-times" onclick="file_del(this);"></i></div>';
+                        html += '<p>'+res.title+'</p>';
+                        html += '<input type="hidden" name="file_data[]" value="'+res.data+'" />';
+                        html += '</div>';
+                        $(".picBox_file").append(html);
+                    }else{
+                        return layer.msg('上传失败');
+                    }
+                },
+                error: function(){
+                    return layer.msg('上传失败');
+                }
+            });
+        });
+        //自定义时间
+        var time_data = {$configs['time_ids']};
+        for(var i in time_data){
+            laydate.render({
+                elem: '#time_'+time_data[i],
+                type:'datetime',
+                theme: '#3c8dbc',
+                trigger: 'click',
+            });
+        }
+        //下次跟进时间
+        laydate.render({
+            elem: '#next_follow_time',
+            type:'datetime',
+            theme: '#3c8dbc',
+            trigger: 'click',
+            min: "{:date('Y-m-d H:i:s')}",
+        });
+        //文件删除
+        function file_del(obj){
+            $(obj).parents(".file").remove();
+        }
+        //图片删除
+        function pic_del(obj){
+            $(obj).parents(".pic").remove();
+        }
+        //下拉样式
+        $('.select2').select2();
+    </script>
+</block>

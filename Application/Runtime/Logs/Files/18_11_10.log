@@ -1,0 +1,352 @@
+[ 2018-11-10T10:14:57+08:00 ] 127.0.0.1 /Files/Image/upload.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000528s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000407s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000436s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0056s ]
+SQL: SELECT `id`,`md5`,`sha1`,`path` FROM `sys_picture` WHERE `md5` = 'a4992648e351c3b7428ed4e5390393ea' LIMIT 1   [ RunTime:0.0004s ]
+SQL: INSERT INTO `sys_picture` (`name`,`size`,`ext`,`md5`,`sha1`,`savename`,`savepath`,`path`) VALUES ('3.jpg','24186','jpg','a4992648e351c3b7428ed4e5390393ea','2553a98c11e6c277324427fa912e9bf817645d30','5be63f219604a.jpg','2018-11-10/','/Uploads/Picture/2018-11-10/5be63f219604a.jpg') [ RunTime:0.0033s ]
+
+[ 2018-11-10T10:15:01+08:00 ] 127.0.0.1 /Files/Image/upload.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000398s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000554s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000583s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0043s ]
+SQL: SELECT `id`,`md5`,`sha1`,`path` FROM `sys_picture` WHERE `md5` = 'a4992648e351c3b7428ed4e5390393ea' LIMIT 1   [ RunTime:0.0001s ]
+
+[ 2018-11-10T10:29:55+08:00 ] 127.0.0.1 /Files/Image/upload.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000493s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000884s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000973s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0043s ]
+SQL: SELECT `id`,`md5`,`sha1`,`path` FROM `sys_picture` WHERE `md5` = 'a4992648e351c3b7428ed4e5390393ea' LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2018-11-10T10:31:02+08:00 ] 127.0.0.1 /Files/Image/upload.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000400s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000560s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000589s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0053s ]
+SQL: SELECT `id`,`md5`,`sha1`,`path` FROM `sys_picture` WHERE `md5` = 'f17ed748580317aa1ab20c118d021bc6' LIMIT 1   [ RunTime:0.0001s ]
+
+[ 2018-11-10T10:43:21+08:00 ] 127.0.0.1 /Files/Image/upload.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000605s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000487s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000523s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0043s ]
+SQL: SELECT `id`,`md5`,`sha1`,`path` FROM `sys_picture` WHERE `md5` = 'e5f7cf6874ff33db6be18594468f93d9' LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2018-11-10T10:43:40+08:00 ] 127.0.0.1 /files/Image/index/sha1/9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000380s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000632s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000679s ]
+
+[ 2018-11-10T10:45:03+08:00 ] 127.0.0.1 /files/Image/index/sha1/9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000461s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000586s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000617s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0045s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = '9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae' LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2018-11-10T10:45:49+08:00 ] 127.0.0.1 /files/Image/index/sha1/9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000402s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000558s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000588s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0043s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = '9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae' LIMIT 1   [ RunTime:0.0001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000657s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000683s ]
+
+[ 2018-11-10T10:45:49+08:00 ] 127.0.0.1 /files/Image/index/sha1/9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000473s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000561s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000592s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0042s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = '9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae' LIMIT 1   [ RunTime:0.0001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000640s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000665s ]
+
+[ 2018-11-10T10:45:50+08:00 ] 127.0.0.1 /files/Image/index/sha1/9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000408s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000605s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000643s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0046s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = '9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae' LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000747s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000773s ]
+
+[ 2018-11-10T10:47:05+08:00 ] 127.0.0.1 /Files/Image/upload.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000379s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000554s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000584s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0041s ]
+SQL: SELECT `id`,`md5`,`sha1`,`path` FROM `sys_picture` WHERE `md5` = 'a4992648e351c3b7428ed4e5390393ea' LIMIT 1   [ RunTime:0.0001s ]
+SQL: INSERT INTO `sys_picture` (`name`,`size`,`ext`,`md5`,`sha1`,`savename`,`savepath`,`path`,`mime`) VALUES ('3.jpg','24186','jpg','a4992648e351c3b7428ed4e5390393ea','2553a98c11e6c277324427fa912e9bf817645d30','5be646a9d9ab6.jpg','2018-11-10/','/Uploads/Picture/2018-11-10/5be646a9d9ab6.jpg','image/jpeg') [ RunTime:0.0021s ]
+
+[ 2018-11-10T10:47:16+08:00 ] 127.0.0.1 /files/Image/index/sha1/2553a98c11e6c277324427fa912e9bf817645d30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000402s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000569s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000601s ]
+
+[ 2018-11-10T10:47:30+08:00 ] 127.0.0.1 /files/Image/index/sha1/2553a98c11e6c277324427fa912e9bf817645d30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000411s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000572s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000603s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0262s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = '2553a98c11e6c277324427fa912e9bf817645d30' LIMIT 1   [ RunTime:0.0001s ]
+
+[ 2018-11-10T10:47:50+08:00 ] 127.0.0.1 /files/Image/index/sha1/2553a98c11e6c277324427fa912e9bf817645d30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000392s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000555s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000585s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0052s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = '2553a98c11e6c277324427fa912e9bf817645d30' LIMIT 1   [ RunTime:0.0001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000626s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000659s ]
+
+[ 2018-11-10T10:49:24+08:00 ] 127.0.0.1 /files/Image/index/sha1/9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000392s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000556s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000586s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0043s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = '9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae' LIMIT 1   [ RunTime:0.0001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000646s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000670s ]
+
+[ 2018-11-10T10:49:28+08:00 ] 127.0.0.1 /files/Image/index/sha1/9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000379s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000764s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000802s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0049s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = '9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae' LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000675s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000700s ]
+
+[ 2018-11-10T10:49:36+08:00 ] 127.0.0.1 /files/Image/index/sha1/9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000588s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000851s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000914s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0043s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = '9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae' LIMIT 1   [ RunTime:0.0001s ]
+
+[ 2018-11-10T10:49:36+08:00 ] 127.0.0.1 /files/Image/index/sha1/9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000382s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000602s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000637s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0050s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = '9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae' LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2018-11-10T10:49:37+08:00 ] 127.0.0.1 /files/Image/index/sha1/9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000627s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000559s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000592s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0042s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = '9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae' LIMIT 1   [ RunTime:0.0001s ]
+
+[ 2018-11-10T11:50:21+08:00 ] 127.0.0.1 /Files/File/upload.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000343s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000415s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000446s ]
+SQL: SHOW COLUMNS FROM `sys_file` [ RunTime:0.0049s ]
+SQL: SELECT `id`,`name`,`mime`,`size`,`ext`,`md5`,`sha1`,`savename`,`savepath`,`path` FROM `sys_file` WHERE `md5` = 'a4992648e351c3b7428ed4e5390393ea' LIMIT 1   [ RunTime:0.0002s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type' in 'field list'
+
+[ 2018-11-10T11:51:10+08:00 ] 127.0.0.1 /Files/File/upload.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000387s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000559s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000588s ]
+SQL: SHOW COLUMNS FROM `sys_file` [ RunTime:0.0044s ]
+SQL: SELECT `id`,`name`,`mime`,`size`,`ext`,`md5`,`sha1`,`savename`,`savepath`,`path` FROM `sys_file` WHERE `md5` = 'a4992648e351c3b7428ed4e5390393ea' LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2018-11-10T11:52:43+08:00 ] 127.0.0.1 /Files/File/upload.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000387s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000578s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000607s ]
+SQL: SHOW COLUMNS FROM `sys_file` [ RunTime:0.0043s ]
+SQL: SELECT `id`,`name`,`mime`,`size`,`ext`,`md5`,`sha1`,`savename`,`savepath`,`path` FROM `sys_file` WHERE `md5` = 'e5f7cf6874ff33db6be18594468f93d9' LIMIT 1   [ RunTime:0.0002s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type' in 'field list'
+
+[ 2018-11-10T11:56:43+08:00 ] 127.0.0.1 /Files/File/upload.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000710s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000574s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000613s ]
+SQL: SHOW COLUMNS FROM `sys_file` [ RunTime:0.0045s ]
+SQL: SELECT `id`,`name`,`mime`,`size`,`ext`,`md5`,`sha1`,`savename`,`savepath`,`path` FROM `sys_file` WHERE `md5` = 'a4992648e351c3b7428ed4e5390393ea' LIMIT 1   [ RunTime:0.0004s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type' in 'field list'
+
+[ 2018-11-10T14:01:25+08:00 ] 127.0.0.1 /Files/File/upload.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000336s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000405s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000432s ]
+SQL: SHOW COLUMNS FROM `sys_file` [ RunTime:0.0045s ]
+SQL: SELECT `id`,`name`,`type`,`size`,`ext`,`md5`,`sha1`,`savename`,`savepath`,`path` FROM `sys_file` WHERE `md5` = '663c269b9ffd9654efe76c604d9acdd3' LIMIT 1   [ RunTime:0.0002s ]
+SQL: INSERT INTO `sys_file` (`name`,`size`,`ext`,`md5`,`sha1`,`savename`,`savepath`,`path`,`type`) VALUES ('4.jpg','35170','jpg','663c269b9ffd9654efe76c604d9acdd3','e7b722c19f69d21e915b64aaa0fe06c8e5e5b72d','5be67435689a0.jpg','2018-11-10/','/Uploads/Download/2018-11-10/5be67435689a0.jpg','1') [ RunTime:0.0017s ]
+
+[ 2018-11-10T14:01:26+08:00 ] 127.0.0.1 /Files/File/upload.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000376s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000554s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000583s ]
+SQL: SHOW COLUMNS FROM `sys_file` [ RunTime:0.0041s ]
+SQL: SELECT `id`,`name`,`type`,`size`,`ext`,`md5`,`sha1`,`savename`,`savepath`,`path` FROM `sys_file` WHERE `md5` = '285eb82bbbb263ad0ebdcd5f243186f2' LIMIT 1   [ RunTime:0.0001s ]
+SQL: INSERT INTO `sys_file` (`name`,`size`,`ext`,`md5`,`sha1`,`savename`,`savepath`,`path`,`type`) VALUES ('5.jpg','30433','jpg','285eb82bbbb263ad0ebdcd5f243186f2','30c067f8d8ba3a820a5158ff1dde03b2eedaee77','5be67436697ef.jpg','2018-11-10/','/Uploads/Download/2018-11-10/5be67436697ef.jpg','1') [ RunTime:0.0018s ]
+
+[ 2018-11-10T14:06:27+08:00 ] 127.0.0.1 /Files/Image/upload.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000383s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000554s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000582s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0051s ]
+SQL: SELECT `id`,`md5`,`sha1`,`path` FROM `sys_picture` WHERE `md5` = 'e5f7cf6874ff33db6be18594468f93d9' LIMIT 1   [ RunTime:0.0002s ]
+SQL: INSERT INTO `sys_picture` (`name`,`size`,`ext`,`md5`,`sha1`,`savename`,`savepath`,`path`,`mime`) VALUES ('2.jpg','27378','jpg','e5f7cf6874ff33db6be18594468f93d9','9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae','5be675630b660.jpg','2018-11-10/','/Uploads/Picture/2018-11-10/5be675630b660.jpg','image/jpeg') [ RunTime:0.0019s ]
+
+[ 2018-11-10T14:06:27+08:00 ] 127.0.0.1 /files/Image/index/sha1/9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000380s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000562s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000594s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0041s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = '9b8b66d7cc7fc6a164c28e6ee10cdd741ac3a5ae' LIMIT 1   [ RunTime:0.0001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000632s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000664s ]
+
+[ 2018-11-10T14:06:28+08:00 ] 127.0.0.1 /Files/Image/upload.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000387s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000598s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000631s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0044s ]
+SQL: SELECT `id`,`md5`,`sha1`,`path` FROM `sys_picture` WHERE `md5` = 'a4992648e351c3b7428ed4e5390393ea' LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2018-11-10T14:06:28+08:00 ] 127.0.0.1 /files/Image/index/sha1/2553a98c11e6c277324427fa912e9bf817645d30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000411s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000561s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000593s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0041s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = '2553a98c11e6c277324427fa912e9bf817645d30' LIMIT 1   [ RunTime:0.0001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000675s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000709s ]
+
+[ 2018-11-10T14:06:30+08:00 ] 127.0.0.1 /Files/Image/upload.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000390s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000444s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000472s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0042s ]
+SQL: SELECT `id`,`md5`,`sha1`,`path` FROM `sys_picture` WHERE `md5` = '285eb82bbbb263ad0ebdcd5f243186f2' LIMIT 1   [ RunTime:0.0002s ]
+SQL: INSERT INTO `sys_picture` (`name`,`size`,`ext`,`md5`,`sha1`,`savename`,`savepath`,`path`,`mime`) VALUES ('5.jpg','30433','jpg','285eb82bbbb263ad0ebdcd5f243186f2','30c067f8d8ba3a820a5158ff1dde03b2eedaee77','5be67566154f9.jpg','2018-11-10/','/Uploads/Picture/2018-11-10/5be67566154f9.jpg','image/jpeg') [ RunTime:0.0025s ]
+
+[ 2018-11-10T14:06:30+08:00 ] 127.0.0.1 /files/Image/index/sha1/30c067f8d8ba3a820a5158ff1dde03b2eedaee77
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000384s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000451s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000481s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0042s ]
+SQL: SELECT `id`,`path`,`size`,`mime` FROM `sys_picture` WHERE `sha1` = '30c067f8d8ba3a820a5158ff1dde03b2eedaee77' LIMIT 1   [ RunTime:0.0001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000546s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000577s ]
+
+[ 2018-11-10T14:16:29+08:00 ] 127.0.0.1 /Files/Image/upload.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000377s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000436s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000468s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0044s ]
+SQL: SELECT `id`,`md5`,`sha1`,`path` FROM `sys_picture` WHERE `md5` = 'e5f7cf6874ff33db6be18594468f93d9' LIMIT 1   [ RunTime:0.0001s ]
+
